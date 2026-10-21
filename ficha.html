@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi PC soñada · Expo Técnica 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Figtree:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#060f26;color:#eef1f8;font:500 16px/1.5 Figtree,system-ui,sans-serif;text-align:center;padding:16px 14px 40px}
+canvas{display:block;width:100%;max-width:480px;height:auto;margin:0 auto 16px;border-radius:14px}
+.acts{display:grid;gap:10px;max-width:440px;margin:0 auto}
+.btn{display:block;padding:13px 14px;border:0;border-radius:10px;background:#5a8bff;color:#060f26;font:700 16px 'Chakra Petch',sans-serif;text-decoration:none;cursor:pointer}
+.btn.alt{background:transparent;color:#eef1f8;border:2px solid #2a559e}
+.hint{color:#c9d2e6;font-size:14px;margin:0 auto 14px;max-width:440px}
+.bad{max-width:440px;margin:60px auto}
+[hidden]{display:none!important}
+@media print{body{background:#fff;padding:0}.acts,.hint{display:none}canvas{max-width:none;border-radius:0}}
+</style>
+</head>
+<body>
+<p class="hint" id="hint"></p>
+<canvas id="cv" width="900" height="1540" role="img"></canvas>
+<div class="acts" id="acts">
+  <button class="btn" id="dl" type="button"></button>
+  <button class="btn alt" id="sh" type="button"></button>
+  <button class="btn alt" id="pr" type="button"></button>
+  <a class="btn alt" href="./" id="ag"></a>
+</div>
+<div class="bad" id="bad" hidden><h2 id="bt"></h2><p id="bp"></p><a class="btn" href="./" id="bg"></a></div>
+
+<script src="tarjeta.js"></script>
+<script>
+/* Datos: tienen que coincidir con los del simulador (index). Si cambiás precios o piezas allá, cambialos acá. */
+const CPU=[{n:'Intel Pentium',p:70,cap:50,c:'#6b7280'},{n:'Intel Core i3',p:120,cap:80,c:'#2563eb'},{n:'Intel Core i5',p:180,cap:125,c:'#0ea5e9'},{n:'Intel Core i7',p:320,cap:160,c:'#6d28d9'},{n:'Ryzen 5',p:160,cap:125,c:'#f97316'},{n:'Ryzen 7',p:280,cap:160,c:'#dc2626'}];
+const GPU=[{n:'GTX 1650',p:160,fps:45,c:'#16a34a'},{n:'RTX 3050',p:250,fps:75,c:'#db2777'},{n:'RTX 3060',p:330,fps:90,c:'#a21caf'},{n:'RTX 4060',p:380,fps:120,c:'#7c3aed'},{n:'RTX 4070',p:580,fps:144,c:'#4f46e5'}];
+const RAM=[{n:'8GB DDR4',p:30,f:.85,dual:false},{n:'16GB DDR4 (2x8)',p:60,f:1,dual:true},{n:'32GB DDR4',p:110,f:1,dual:false},{n:'16GB DDR5',p:85,f:1,dual:false}];
+const WC={'Intel Pentium':58,'Intel Core i3':60,'Intel Core i5':65,'Intel Core i7':125,'Ryzen 5':65,'Ryzen 7':105},WG={'GTX 1650':75,'RTX 3050':130,'RTX 3060':170,'RTX 4060':115,'RTX 4070':200};
+const psuOf=(c,g)=>Math.max(550,Math.ceil((WC[c.n]+WG[g.n]+100)*1.4/50)*50);
+const liqOf=(c,g)=>/i7|Ryzen 7/.test(c.n)&&g.fps>=120;
+
+const D={
+es:{brand:'EXPO TÉCNICA 2026',rar:['Común','Poco común','Rara','Épica','Legendaria'],names:['La Principiante','La Promesa','La Equilibrada','La Cazadora de FPS','La Bestia Ultra'],
+ ideal:['Navegar, estudiar y juegos muy livianos.','Juegos populares en calidad baja o media.','Juegos actuales en calidad media, bien fluidos.','Juegos exigentes en calidad alta.','Calidad máxima y monitores de alta frecuencia.'],
+ idealT:'Pensada para',perf:['Básico','Entrada','Medio','Alto','Ultra'],sCpu:'Procesador',sGpu:'Placa de video',sRam:'Memoria',cap:'FPS máx.',
+ bud:'Presupuesto',tot:'TOTAL',psu:'Fuente',cool:'Refrigeración',liq:'Líquida 240mm',air:'Por aire',bn:'Cuello de botella',yes:'Sí',no:'No',
+ rate:'Cotización: 1 US$ = AR$ {r}',foot1:'Stand “Build Your Dream PC”',foot2:'Escuela Provincial de Comercio Nº 2 “Inspector Carlos Lanzillotto”',
+ disc:'Estimaciones del simulador de la Expo: no son mediciones reales ni precios de venta.',
+ hint:'Tocá “Descargar tarjeta” para guardarla en tu celular.',dl:'⬇️ Descargar tarjeta',sh:'📤 Compartir',pr:'🖨️ Guardar PDF',ag:'🔧 Armar otra PC',copied:'Link copiado',
+ share:'Armé mi PC en la Expo Técnica: {f} FPS · {n}',badT:'No pudimos leer esta tarjeta',badP:'Escaneá el QR otra vez o armá tu PC de nuevo.'},
+en:{brand:'TECHNICAL EXPO 2026',rar:['Common','Uncommon','Rare','Epic','Legendary'],names:['The Beginner','The Rising Star','The Balanced One','The FPS Hunter','The Ultra Beast'],
+ ideal:['Browsing, studying and very light games.','Popular games on low or medium settings.','Current games on medium settings, running smoothly.','Demanding games on high settings.','Maximum quality and high refresh rate monitors.'],
+ idealT:'Made for',perf:['Basic','Entry','Medium','High','Ultra'],sCpu:'Processor',sGpu:'Graphics card',sRam:'Memory',cap:'max FPS',
+ bud:'Budget',tot:'TOTAL',psu:'PSU',cool:'Cooling',liq:'Liquid 240mm',air:'Air',bn:'Bottleneck',yes:'Yes',no:'No',
+ rate:'Rate: 1 US$ = AR$ {r}',foot1:'Stand “Build Your Dream PC”',foot2:'Escuela Provincial de Comercio Nº 2 “Inspector Carlos Lanzillotto”',
+ disc:'Estimates from the Expo simulator: not real measurements or sale prices.',
+ hint:'Tap “Download card” to save it on your phone.',dl:'⬇️ Download card',sh:'📤 Share',pr:'🖨️ Save PDF',ag:'🔧 Build another PC',copied:'Link copied',
+ share:'I built my PC at the Technical Expo: {f} FPS · {n}',badT:'We could not read this card',badP:'Scan the QR again or build your PC again.'}};
+
+const q=new URLSearchParams(location.search);
+const [ci,gi,ri]=(q.get('b')||'').split('-').map(Number);
+const c=CPU[ci],g=GPU[gi],r=RAM[ri];
+const L=q.get('l')==='en'?'en':'es',S=D[L],$=id=>document.getElementById(id);
+
+if(!(c&&g&&r)){
+  $('cv').hidden=$('acts').hidden=$('hint').hidden=true;$('bad').hidden=false;
+  $('bt').textContent=S.badT;$('bp').textContent=S.badP;$('bg').textContent=S.ag;
+}else{
+  const ARS=q.get('m')==='ARS',RATE=+q.get('t')>0?+q.get('t'):1535,d=q.get('d')||'';
+  const date=/^\d{8}$/.test(d)?`${d.slice(6)}/${d.slice(4,6)}/${d.slice(0,4)}`:new Date().toLocaleDateString(L==='en'?'en-US':'es-AR');
+  const cv=$('cv'),{name,fps,total,money}=drawCard(cv,{c,g,r,w:psuOf(c,g),liq:liqOf(c,g),ARS,RATE,date,L});
+  
+  cv.setAttribute('aria-label',`${fps} FPS · ${name}`);
+  $('hint').textContent=S.hint;$('dl').textContent=S.dl;$('sh').textContent=S.sh;$('pr').textContent=S.pr;$('ag').textContent=S.ag;
+  document.documentElement.lang=L;
+  $('dl').onclick=()=>cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='mi-pc-sonada.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/png');
+  $('sh').onclick=()=>cv.toBlob(async b=>{
+    const txt=S.share.replace('{n}',name).replace('{f}',fps),data={files:[new File([b],'mi-pc-sonada.png',{type:'image/png'})],text:txt};
+    try{
+      if(navigator.canShare&&navigator.canShare(data))await navigator.share(data);
+      else if(navigator.share)await navigator.share({text:txt,url:location.href});
+      else{await navigator.clipboard.writeText(location.href);$('sh').textContent=S.copied}
+    }catch(e){}
+  },'image/png');
+  $('pr').onclick=()=>window.print();
+}
+</script>
+</body>
+</html>
