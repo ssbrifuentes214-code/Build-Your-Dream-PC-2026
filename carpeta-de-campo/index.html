@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build Your Dream PC · Expo Técnica 2026 · Plan A con QR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="hero" id="main-top">
+  <p class="hero-tag">Proyecto Expo Técnica · Noviembre 2026 · Con QR (Internet)</p>
+  <h1>Build Your Dream <span>PC</span></h1>
+  <p class="hero-es">Armá tu PC soñada</p>
+  <p class="slogan">¿Cuántos FPS tenés? / What is your FPS?</p>
+  <nav class="menu" aria-label="Secciones">
+    <a href="#/proyecto" data-go="proyecto">Proyecto</a>
+    <a href="#/teoria" data-go="teoria">Teoría</a>
+    <a href="#/glosario" data-go="glosario">Glosario</a>
+    <a href="#/guia" data-go="guia">Planes A y B</a>
+    <a href="#/plana" data-go="plana">Plan A con QR</a>
+    <a href="#/qr" data-go="qr">Crear el QR</a>
+    <a href="#/sim" data-go="sim">Simulador</a>
+    <a href="#/buscar" data-go="buscar">Buscador</a>
+    <a href="#/frases" data-go="frases">Frases con audio</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="part-title" data-view="proyecto"><h2>Proyecto del stand</h2><p>Documento completo: objetivo, teoría, glosario y los dos planes.</p></div>
+
+  <section id="d-proyecto" data-view="proyecto">
+    <h2>Nombre, materias y objetivo</h2>
+    <div class="two-col">
+      <article class="panel">
+        <h3>Nombre del stand</h3>
+        <p class="poster-line">BUILD YOUR DREAM PC<br>ARMÁ TU PC SOÑADA</p>
+        <p>Slogan: ¿Cuántos FPS tenés? / What is your FPS?</p>
+        <h3>Materias que intervienen</h3>
+        <ul><li>Instalación y Mantenimiento de Hardware y Software</li><li>Inglés Técnico</li></ul>
+      </article>
+      <article class="panel">
+        <h3>Objetivo del stand</h3>
+        <p>Que el visitante no solo mire, sino que <strong>arme</strong> su PC soñada, entienda cuántos FPS tendría y se lleve un presupuesto bilingüe impreso.</p>
+        <p>Los alumnos atienden 100% solos el stand en inglés básico técnico. El docente es <strong>solo de consulta</strong> si los alumnos no saben resolver.</p>
+        <h3>De qué trata</h3>
+        <p>Stand de asesoramiento gamer. El visitante elige sus componentes (con o sin internet) y el alumno le traduce su elección a FPS reales y a presupuesto. Al final le enseña una palabra del glosario gamer y le entrega su ficha BUDGET de recuerdo. Es interactivo, no es vitrina.</p>
+      </article>
+    </div>
+    <h3 class="sub">Capacidades que deben tener los alumnos</h3>
+    <div class="two-col">
+      <article class="panel"><h3>Técnicas</h3><ul class="checks"><li>Identificar componentes.</li><li>Explicar qué es FPS.</li><li>Detectar cuello de botella (bottleneck).</li><li>Explicar la diferencia entre refrigeración por aire y líquida.</li><li>Calcular la fuente (PSU).</li><li>Chequear compatibilidad de socket y RAM.</li></ul></article>
+      <article class="panel"><h3>De atención</h3><ul class="checks"><li>Atender al público en inglés con frases cortas.</li><li>Trabajo en equipo por roles.</li><li>Resolver sin depender del profe.</li></ul></article>
+    </div>
+  </section>
+
+  <section id="d-teoria" data-view="teoria">
+    <h2>Marco teórico</h2>
+    <p class="note">Tocá 🔊 para escuchar cada frase en inglés.</p>
+    <div class="theory" id="theory"></div>
+  </section>
+
+  <section id="d-glosario" data-view="glosario">
+    <h2>Glosario completo de 30 términos</h2>
+    <p class="note">Son las 30 cartas del Closer.</p>
+    <div class="gcards" id="gloss"></div>
+  </section>
+
+  <section id="d-guia" data-view="guia">
+    <h2>Guía paso a paso detallada</h2>
+    <p class="note">Roles (rotan cada 30 min, el profe es solo consulta): <strong>Host</strong> recibe · <strong>Técnico</strong> explica FPS · <strong>Closer</strong> presupuesto + glosario.</p>
+
+    <h3 class="plan-title">Plan A: con internet (ideal)</h3>
+    <div class="plan">
+      <div>
+        <h3>Paso 1 · Host</h3>
+        <p class="en">"Welcome to Build Your Dream PC / Armá tu PC Soñada! Scan here to build your dream PC / Escaneá acá para armar tu PC soñada"</p>
+        <p>El visitante escanea el QR del Formulario Google y elige CPU, GPU, RAM.</p>
+      </div>
+      <figure class="shot"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTodo1WXBkacOVrwq9MHo3wvx8j2X0b6id6X2NvjyX7kg&s=10" alt="Infografía Paso 1: Host, bienvenida con QR" loading="lazy"></figure>
+    </div>
+    <div class="plan">
+      <div>
+        <h3>Paso 2 · Técnico</h3>
+        <p>Mira el celular del visitante y dice:</p>
+        <p class="en">"You chose RTX 4060 + i5 + 16GB. You get 120 FPS! Great performance, no bottleneck / Elegiste esto, tenés 120 FPS, gran rendimiento sin cuello de botella"</p>
+        <p>Si es gama alta agrega: <span class="en">"For high FPS you need liquid cooling / Para altos FPS necesitás líquida"</span></p>
+      </div>
+      <figure class="shot"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNIBNsyawQ4fQa4WvzFiW9H29BvF2EQEDgzz649cljxg&s=10" alt="Infografía Paso 2: Técnico explica FPS" loading="lazy"></figure>
+    </div>
+    <div class="plan">
+      <div>
+        <h3>Paso 3 · Closer</h3>
+        <p>Llena a mano la ficha BUDGET / PRESUPUESTO con lo que eligió. El visitante saca una carta del glosario. El alumno explica:</p>
+        <p class="en">"Your card is Bottleneck. Bottleneck is cuello de botella. Example: My PC has a bottleneck, I need an upgrade"</p>
+        <p>Cierre: <span class="en">"Thanks for coming! This is your Dream PC Budget / Gracias por venir! Este es tu presupuesto"</span>. Le entrega ficha + sticker.</p>
+      </div>
+      <figure class="shot"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2LGgSkhXuvE8M3SHkRaYtDzFoMKEJWI_qdVkv5BVIUfTt_DQLM33O1r3&s=10" alt="Infografía Paso 3: Closer, presupuesto y glosario" loading="lazy"></figure>
+    </div>
+
+    <h3 class="plan-title">Plan B: sin internet (plan de emergencia, sin celular)</h3>
+    <div class="plan">
+      <div>
+        <h3>Paso 1 · Host</h3>
+        <p>Mismo saludo. En vez de QR, le muestra en mesa 3 bandejas físicas con cartitas: bandeja CPU (i3, i5, i7, Ryzen 5, 7), bandeja GPU (RTX 3060, 4060, 4070) y bandeja RAM (8, 16, 32GB). El visitante elige 1 carta de cada bandeja.</p>
+        <h3>Paso 2 · Técnico</h3>
+        <p>Con la tabla impresa de FPS estimados (3060 = 90 FPS, 4060 = 120 FPS, 4070 = 144 FPS) calcula a mano y dice la misma frase: <span class="en">"You chose... You get... FPS!"</span></p>
+        <h3>Paso 3 · Closer</h3>
+        <p>Igual que el Plan A: llena la ficha y el glosario. No necesita internet para nada.</p>
+      </div>
+      <figure class="shot wide"><img src="imag/bandeja.jpeg" alt="Infografía: cómo se juega sin internet" loading="lazy"></figure>
+    </div>
+    <figure class="shot full"><img src="imag/Guía de hardware y rendimiento FPS.png" alt="Plan B sin internet: bandejas de cartas y tabla de FPS" loading="lazy"></figure>
+    <figure class="shot full"><img src="imag/ficha1.jpeg"><img src="imag/ficha2.jpeg" alt="15 cartas de juego de CPU, GPU y RAM para recortar" loading="lazy"><figcaption>Hoja de 15 cartas para recortar (imprimir en A4).</figcaption></figure>
+
+    <h3 class="plan-title">Materiales impresos para los dos planes</h3>
+    <ul class="materials">
+      <li><strong>1</strong> Cartel grande BUILD YOUR DREAM PC / ARMÁ TU PC SOÑADA + QR</li>
+      <li><strong>+</strong> Fichas BUDGET / PRESUPUESTO en blanco para llenar a mano</li>
+      <li><strong>30</strong> cartas de glosario bilingüe</li>
+      <li><strong>+</strong> Cartas físicas de CPU/GPU/RAM para Plan B + tabla de FPS</li>
+      <li><strong>1</strong> consigna de 1 hoja pegada atrás del stand</li>
+    </ul>
+  </section>
+
+  <div class="part-title" data-view="plana qr"><h2>Plan A con QR</h2><p>Detalle del Plan A, el cartel y cómo crear el QR.</p></div>
+
+
+  <section id="objetivo" data-view="plana">
+    <h2>1. Objetivo del Plan A (con internet)</h2>
+    <p class="lead">Que el visitante escanee un QR, elija sus componentes y el alumno le traduzca a FPS reales y a presupuesto bilingüe.</p>
+    <ul class="checks">
+      <li>Atención 100% alumnos en inglés.</li>
+      <li>Docente solo de consulta.</li>
+    </ul>
+  </section>
+
+  <section id="antes" data-view="plana">
+    <h2>2. Antes de la expo · 10 minutos</h2>
+    <div class="two-col">
+      <article class="panel">
+        <h3>Paso 1 · Google Forms</h3>
+        <p>Crear un formulario con tres preguntas:</p>
+        <dl class="options">
+          <dt>Elige tu CPU</dt>
+          <dd>i3 / i5 / i7 / Ryzen 5 / Ryzen 7</dd>
+          <dt>Elige tu GPU</dt>
+          <dd>RTX 3060 / RTX 4060 / RTX 4070</dd>
+          <dt>Elige tu RAM</dt>
+          <dd>8GB / 16GB / 32GB</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <h3>Paso 2 · QR</h3>
+        <p>Generar el QR del link del formulario y armar un cartel A3:</p>
+        <p class="poster-line">BUILD YOUR DREAM PC<br>SCAN HERE / ESCANEÁ ACÁ</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="roles" data-view="plana">
+    <h2>3. Guía paso a paso · 3 roles</h2>
+    <p class="note">Los roles rotan cada 30 minutos.</p>
+
+    <div class="roles">
+
+      <article class="role role-host">
+        <header>
+          <h3>Host</h3>
+          <span class="time">30 seg</span>
+        </header>
+        <p class="en">"Welcome to Build Your Dream PC! Scan here to build your Dream PC"</p>
+        <p class="es">"¡Bienvenidos! Escaneá acá para armar tu PC soñada"</p>
+        <p><strong>Acción:</strong> el visitante escanea y elige en su celular.</p>
+      </article>
+
+      <article class="role role-tech">
+        <header>
+          <h3>Técnico</h3>
+          <span class="time">2 min</span>
+        </header>
+        <p class="en">"You chose RTX 4060 + i5 + 16GB. You get 120 FPS! Great performance, no bottleneck."</p>
+        <p class="es">"Elegiste esto. Tenés 120 FPS, gran rendimiento sin cuello de botella."</p>
+        <p class="extra"><strong>Extra gama alta:</strong><br>"For high FPS you need liquid cooling" / "Para altos FPS necesitás líquida"</p>
+
+        <table class="fps-table">
+          <caption>Tabla de FPS por placa de video</caption>
+          <thead><tr><th>GPU</th><th>FPS</th></tr></thead>
+          <tbody>
+            <tr><td>RTX 3060</td><td>90 FPS</td></tr>
+            <tr><td>RTX 4060</td><td>120 FPS</td></tr>
+            <tr><td>RTX 4070</td><td>144 FPS</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="role role-closer">
+        <header>
+          <h3>Closer</h3>
+          <span class="time">2 min</span>
+        </header>
+        <ol>
+          <li>Llenar a mano la ficha BUDGET con lo elegido.</li>
+          <li>El visitante saca una carta del glosario (30 cartas).</li>
+          <li>Explicar: <span class="en">"Your card is Bottleneck. Bottleneck is cuello de botella."</span></li>
+          <li>Cierre: <span class="en">"Thanks for coming! This is your Dream PC Budget"</span> / "Gracias por venir, este es tu presupuesto". Entregar la ficha y un sticker.</li>
+        </ol>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="ejemplo" data-view="plana">
+    <h2>Así se ve en el cartel del stand</h2>
+    <div class="board">
+
+      <div class="board-col">
+        <h3>Host</h3>
+        <p class="board-big">Welcome!<br>Scan here to build your Dream PC</p>
+        <p class="board-small">Escaneá acá para armar tu PC</p>
+      </div>
+
+      <div class="board-col">
+        <h3>Técnico</h3>
+        <p class="board-big">You chose RTX 4060 + i5 + 16GB.<br><em>You get 120 FPS! No bottleneck ✓</em></p>
+        <table class="fps-table fps-games">
+          <caption>FPS Performance Table / Tabla de FPS</caption>
+          <thead><tr><th>Game / Juego</th><th>Res.</th><th>Avg FPS</th></tr></thead>
+          <tbody>
+            <tr><td>Fortnite</td><td>1080p</td><td>120 FPS</td></tr>
+            <tr><td>Call of Duty: Warzone</td><td>1080p</td><td>110 FPS</td></tr>
+            <tr><td>Valorant</td><td>1080p</td><td>150 FPS</td></tr>
+          </tbody>
+        </table>
+        <p class="board-small">Tested at 1080p / High settings · Pruebas a 1080p · Rendimiento fluido</p>
+      </div>
+
+      <div class="board-col">
+        <h3>Closer</h3>
+        <p class="board-big">Thanks for coming!<br>This is your Dream PC Budget</p>
+        <table class="budget">
+          <caption>Presupuesto / Budget</caption>
+          <tbody>
+            <tr><td>RTX 4060</td><td>$299</td></tr>
+            <tr><td>Intel Core i5 13400F</td><td>$180</td></tr>
+            <tr><td>16GB DDR4 RAM</td><td>$45</td></tr>
+            <tr><td>Motherboard B760</td><td>$120</td></tr>
+            <tr><td>PSU 550W 80+ Bronze</td><td>$65</td></tr>
+            <tr><td>Case + Cooling</td><td>$50</td></tr>
+            <tr><td>SSD 1TB NVMe</td><td>$55</td></tr>
+          </tbody>
+          <tfoot><tr><th>Total estimated / Total estimado</th><th>$814 USD</th></tr></tfoot>
+        </table>
+        <p class="board-small">Precios en USD · Stock sujeto a disponibilidad · Garantía incluida</p>
+      </div>
+
+    </div>
+
+    <h3 class="sub">Glosario / Glossary</h3>
+    <dl class="glossary">
+      <div><dt>RTX 4060</dt><dd>GPU · Placa de video</dd></div>
+      <div><dt>i5</dt><dd>CPU · Procesador</dd></div>
+      <div><dt>16GB</dt><dd>RAM</dd></div>
+      <div><dt>FPS</dt><dd>Frames per second · Cuadros por segundo</dd></div>
+      <div><dt>Bottleneck</dt><dd>Cuello de botella</dd></div>
+    </dl>
+  </section>
+
+  <section id="materiales" data-view="plana">
+    <h2>4. Materiales impresos</h2>
+    <ul class="materials">
+      <li><strong>1</strong> Cartel A3 + QR</li>
+      <li><strong>50</strong> fichas BUDGET en blanco</li>
+      <li><strong>30</strong> cartas glosario bilingüe</li>
+      <li><strong>1</strong> Tabla FPS impresa</li>
+    </ul>
+  </section>
+
+  <section id="frases" data-view="plana">
+    <h2>5. Frases cortas en inglés</h2>
+    <ul class="phrases">
+      <li>Welcome!</li>
+      <li>Scan here</li>
+      <li>You chose...</li>
+      <li>You get... FPS</li>
+      <li>No bottleneck</li>
+      <li>Liquid cooling is better</li>
+      <li>Check compatibility</li>
+      <li>This is your budget</li>
+      <li>Thanks for coming!</li>
+    </ul>
+  </section>
+
+  <section id="qr" data-view="qr">
+    <h2>Guía · Cómo crear el QR</h2>
+    <p class="note">Anexo técnico: cómo se crea el QR del stand Plan A.</p>
+
+    <ol class="steps">
+
+      <li class="step">
+        <h3>Crear el Google Form <span class="time">2 minutos</span></h3>
+        <ol>
+          <li>Entrar a su Gmail › Google Drive › Nuevo › Formulario de Google.</li>
+          <li>Título: <code>Build Your Dream PC - E.T.I.M. Inquiry / Consulta</code></li>
+          <li>Descripción: <code>Choose your dream components / Elige tus componentes soñados</code></li>
+          <li>Pregunta 1, opción múltiple: <code>Choose your CPU / Elige tu CPU</code><br>i3-12100F / i5-13400F / i7-13700F / Ryzen 5 5600 / Ryzen 7 5800X</li>
+          <li>Pregunta 2, opción múltiple: <code>Choose your GPU / Elige tu GPU</code><br>RTX 3060 / RTX 4060 / RTX 4070</li>
+          <li>Pregunta 3, opción múltiple: <code>Choose your RAM / Elige tu RAM</code><br>8GB / 16GB / 32GB</li>
+        </ol>
+      </li>
+
+      <li class="step">
+        <h3>Sacar el link <span class="time">30 segundos</span></h3>
+        <ol>
+          <li>Arriba a la derecha, clic en <code>ENVIAR / SEND</code>.</li>
+          <li>Ir a la pestaña del clip (Link).</li>
+          <li>Tildar <code>Acortar URL</code>.</li>
+          <li>Clic en <code>COPIAR / COPY</code>. Queda algo así: <code>https://forms.gle/xxxx</code></li>
+        </ol>
+      </li>
+
+      <li class="step">
+        <h3>Crear el QR <span class="time">1 minuto</span></h3>
+        <ol>
+          <li>Entrar a <a href="https://www.qr-code-generator.com" target="_blank" rel="noopener">qr-code-generator.com</a>.</li>
+          <li>Elegir <code>URL</code>.</li>
+          <li>Pegar el link copiado del formulario.</li>
+          <li>Clic en <code>Generar QR / Generate QR</code>.</li>
+          <li>Clic en <code>Descargar PNG</code> en alta calidad (HD).</li>
+          <li class="warn"><strong>Prueba obligatoria:</strong> escanear con su propio celular antes de imprimir. Tiene que abrir el formulario directo.</li>
+        </ol>
+      </li>
+
+      <li class="step">
+        <h3>Hacer el cartel A3 <span class="time">2 minutos</span></h3>
+        <ol>
+          <li>En Canva o Word, pegar el QR grande al centro.</li>
+          <li>Texto arriba en grande: <code>BUILD YOUR DREAM PC</code></li>
+          <li>Texto abajo en grande: <code>SCAN HERE TO BUILD YOUR DREAM PC / ESCANEÁ ACÁ PARA ARMAR TU PC SOÑADA</code></li>
+          <li>Imprimir en A3 y plastificarlo si se puede. Ubicarlo en un atril en la entrada del stand.</li>
+        </ol>
+      </li>
+
+      <li class="step">
+        <h3>Qué pasa cuando lo escanean</h3>
+        <p>El visitante elige en su celular. A ustedes les llega la respuesta al instante a la planilla de Google Sheets del Form. El Técnico del stand lee esa respuesta y le dice los FPS de memoria.</p>
+        <p>No necesitan internet potente: con datos del celular alcanza.</p>
+      </li>
+
+    </ol>
+
+    <aside class="tip">
+      <strong>Consejo / Tip:</strong> laminá el póster para mayor durabilidad y asegurate de que el QR escanee antes de imprimir.
+      <span class="en">Laminate the poster for durability. Test the QR before printing.</span>
+    </aside>
+  </section>
+
+
+    <div class="part-title lab-title" data-view="sim buscar frases"><h2>Laboratorio del stand</h2><p>Para practicar antes de la expo: simulador de PC, buscador bilingüe y frases con audio.</p></div>
+
+  <section id="lab-sim" data-view="sim">
+    <h2>Simulador: armá tu PC</h2>
+    <div class="sim">
+      <label>CPU<select id="s-cpu"><option>i3</option><option selected>i5</option><option>i7</option><option>Ryzen 5</option><option>Ryzen 7</option></select></label>
+      <label>GPU<select id="s-gpu"><option>RTX 3060</option><option selected>RTX 4060</option><option>RTX 4070</option></select></label>
+      <label>RAM<select id="s-ram"><option value="8">8GB</option><option value="16" selected>16GB</option><option value="32">32GB</option></select></label>
+      <label>Monitor<select id="s-hz"><option value="60">60Hz</option><option value="144" selected>144Hz</option></select></label>
+    </div>
+    <div class="sim-out" id="sim-out" aria-live="polite"></div>
+    <p class="note small">Estimación didáctica para practicar: usa la tabla 3060 = 90, 4060 = 120, 4070 = 144 FPS y un descuento aproximado por cuello de botella y RAM. No son mediciones reales.</p>
+  </section>
+
+  <section id="lab-buscar" data-view="buscar">
+    <h2>Buscador y traductor</h2>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscá: bottleneck, cuello, cooling, fuente…" aria-label="Buscar en glosario, frases y teoría" autocomplete="off">
+      <button type="button" id="dir" aria-pressed="false">Mostrar: inglés → español</button>
+    </div>
+    <ul class="results" id="results"></ul>
+  </section>
+
+  <section id="lab-frases" data-view="frases">
+    <h2>Frases con audio</h2>
+    <p class="note">Practicá la pronunciación: tocá una frase para escucharla.</p>
+    <ul class="speak" id="speak"></ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>Tech School Support · Tech Lab · ¿Preguntas? Consultá al staff / Questions? Ask our staff</p>
+</footer>
+
+<script src="java.js"></script>
+</body>
+</html>
