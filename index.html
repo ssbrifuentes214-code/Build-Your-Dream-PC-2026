@@ -1,0 +1,2831 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Build Your Dream PC · Expo Técnica 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Figtree:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <style>
+/* styles.css — colores, tipografías y diseño de la página */
+
+/* ---------- Colores y base ---------- */
+:root {
+  --navy:#060f26;
+  --deep:#0b1f4d;
+  --blue:#2456d6;
+  --sky:#c9d2e6;
+  --ice:#0f2b6e;
+  --cyan:#5a8bff;
+  --ink:#eef1f8;
+  --line:#2a559e;
+  --a:#5a8bff;
+  --b:#ffd23f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+html {
+  scroll-padding-top:70px;
+  scroll-behavior:smooth;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:var(--navy);
+  color:var(--ink);
+  font:400 17px/1.6 Figtree,system-ui,sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family:'Chakra Petch',sans-serif;
+  line-height:1.1;
+  margin:0;
+}
+
+.fps {
+  font-family:'Space Mono',monospace;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline:3px solid var(--cyan);
+  outline-offset:2px;
+}
+
+
+/* ---------- Encabezado, menú e idioma ---------- */
+header {
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:9;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 20px;
+  background:rgba(6,15,38,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #1d3f7a;
+}
+
+header b {
+  font-family:'Chakra Petch';
+  font-size:18px;
+  color:#fff;
+}
+
+nav {
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+}
+
+nav a {
+  color:var(--sky);
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:6px;
+  font-weight:500;
+  font-size:15px;
+  white-space:nowrap;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background:var(--deep);
+  color:#fff;
+}
+
+.lang {
+  display:flex;
+  border:1.5px solid var(--blue);
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.lang button {
+  background:none;
+  border:0;
+  color:var(--sky);
+  padding:6px 12px;
+  font:700 14px 'Chakra Petch';
+  cursor:pointer;
+}
+
+.lang button[aria-pressed=true] {
+  background:var(--blue);
+  color:#fff;
+}
+
+
+/* ---------- Secciones y títulos ---------- */
+section {
+  max-width:1040px;
+  margin:0 auto;
+  padding:64px 20px;
+}
+
+section.top {
+  padding-top:48px;
+  padding-bottom:8px;
+}
+
+.top h1 {
+  font-size:clamp(40px,8vw,84px);
+  color:#fff;
+  letter-spacing:-1px;
+}
+
+.top h1 span {
+  color:var(--cyan);
+}
+
+.slogan {
+  font-size:22px;
+  color:var(--sky);
+  margin:12px 0 0;
+}
+
+h2 {
+  font-size:clamp(28px,5vw,42px);
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.lead {
+  max-width:62ch;
+  color:var(--sky);
+}
+
+
+/* ---------- Franjas azules ---------- */
+.band {
+  background:var(--ice);
+  color:#fff;
+}
+
+
+/* ---------- 1. Simulador: piezas, PC en vivo y ficha ---------- */
+.lab {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 390px;
+  grid-template-areas:"pick side" "rig side";
+  gap:24px 28px;
+  margin-top:28px;
+  align-items:start;
+}
+
+#opts,
+.rig {
+  min-width:0;
+}
+
+#opts {
+  grid-area:pick;
+}
+
+.pg {
+  margin-bottom:22px;
+}
+
+.pg h3 {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:19px;
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.pg-n {
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--b);
+  color:#060f26;
+  font:700 15px 'Chakra Petch';
+}
+
+.pcs {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:10px;
+}
+
+.pc {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-align:left;
+  background:var(--navy);
+  color:#fff;
+  border:2px solid #1d3f7a;
+  border-top:5px solid var(--c);
+  border-radius:12px;
+  padding:10px 12px 12px;
+  font:inherit;
+  cursor:pointer;
+  transition:transform .15s,box-shadow .15s,background .15s;
+}
+
+.pc:hover {
+  transform:translateY(-3px);
+}
+
+.pc.on {
+  border-color:var(--c);
+  background:#0b1f4d;
+  box-shadow:0 0 0 2px var(--c),0 10px 24px -8px var(--c);
+}
+
+.pc.on::after {
+  content:'✓';
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--b);
+  color:#060f26;
+  font:700 12px/20px sans-serif;
+  text-align:center;
+}
+
+.pc-n {
+  padding-right:18px;
+  font:700 16px/1.15 'Chakra Petch',sans-serif;
+}
+
+.pc-s {
+  font-size:13px;
+  color:var(--sky);
+}
+
+.pc-bar {
+  height:6px;
+  border-radius:3px;
+  background:#1d3f7a;
+  overflow:hidden;
+}
+
+.pc-bar i {
+  display:block;
+  height:100%;
+  border-radius:3px;
+  background:var(--c);
+}
+
+.pc-p {
+  font:700 14px 'Space Mono',monospace;
+  white-space:nowrap;
+  color:var(--b);
+}
+
+
+/* ---- PC en vivo: gabinete y medidor ---- */
+.rig {
+  grid-area:rig;
+  background:var(--navy);
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:16px 18px 18px;
+}
+
+.rig h3 {
+  font-size:19px;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.rig-in {
+  display:grid;
+  grid-template-columns:230px minmax(0,1fr);
+  gap:20px;
+  align-items:center;
+}
+
+#tower {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.sm-glow {
+  opacity:0;
+}
+
+#tower.on .sm-glow {
+  opacity:1;
+  animation:rgb 4s linear infinite;
+}
+
+.sm-pop {
+  animation:drop .6s ease-out both;
+}
+
+.t-lbl {
+  fill:#cdd8f5;
+  font:600 8px Figtree,sans-serif;
+  text-anchor:middle;
+}
+
+.t-guide {
+  fill:#5f7fc9;
+  font:700 9px 'Chakra Petch',sans-serif;
+  text-anchor:middle;
+}
+
+.t-psu {
+  fill:#cfd3dc;
+  font:700 11px 'Chakra Petch',sans-serif;
+}
+
+.t-sub {
+  fill:#9aa2b3;
+  font-size:7px;
+}
+
+.t-aio {
+  fill:#cfd3dc;
+  font:700 7px sans-serif;
+  text-anchor:middle;
+}
+
+.gauge svg {
+  display:block;
+  width:100%;
+  max-width:280px;
+  margin:0 auto;
+}
+
+.g-track {
+  fill:none;
+  stroke:#1d3f7a;
+  stroke-width:14;
+  stroke-linecap:round;
+}
+
+.g-val {
+  fill:none;
+  stroke:url(#gg);
+  stroke-width:14;
+  stroke-linecap:round;
+  stroke-dasharray:0 100;
+  transition:stroke-dasharray .6s ease,opacity .3s;
+}
+
+.g-num {
+  fill:#fff;
+  font-size:34px;
+  font-weight:700;
+  text-anchor:middle;
+}
+
+.g-unit {
+  fill:var(--sky);
+  font:700 12px 'Chakra Petch',sans-serif;
+  text-anchor:middle;
+}
+
+.g-tick {
+  fill:var(--sky);
+  font-size:11px;
+}
+
+.lvl {
+  display:table;
+  margin:2px auto 0;
+  padding:3px 16px;
+  border-radius:99px;
+  background:var(--deep);
+  border:1px solid var(--line);
+  color:var(--b);
+  font:700 16px 'Chakra Petch',sans-serif;
+}
+
+.msg {
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  background:var(--deep);
+  font-size:15px;
+}
+
+.msg.warn {
+  background:#3a2a00;
+  color:#ffd98a;
+}
+
+
+/* ---- Columna derecha: moneda, ficha y botones ---- */
+.lab-side {
+  grid-area:side;
+  position:sticky;
+  top:76px;
+  display:grid;
+  gap:14px;
+  min-width:0;
+}
+
+/* ---------- Moneda: dólar / peso y cotización ---------- */
+.cur {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.seg {
+  display:flex;
+  border:1.5px solid var(--blue);
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.seg button {
+  background:none;
+  border:0;
+  color:var(--sky);
+  padding:6px 12px;
+  font:700 14px 'Chakra Petch';
+  cursor:pointer;
+}
+
+.seg button[aria-pressed=true] {
+  background:var(--blue);
+  color:#fff;
+}
+
+.rate {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  color:var(--sky);
+}
+
+.rate[hidden] {
+  display:none;
+}
+
+.rate input {
+  width:92px;
+  padding:6px 8px;
+  border-radius:8px;
+  border:1.5px solid var(--blue);
+  background:var(--navy);
+  color:#fff;
+  font:700 14px 'Space Mono',monospace;
+}
+
+
+/* ---------- Hoja para imprimir y QR (la ficha en papel) ---------- */
+.paper {
+  --p:#f3f6ff;
+  position:relative;
+  margin-bottom:8px;
+  padding:18px 18px 22px;
+  background:var(--p);
+  color:#0b1f4d;
+  border-radius:12px 12px 0 0;
+  font-size:15px;
+  box-shadow:0 14px 30px -12px #000c;
+}
+
+.pp-top {
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding-bottom:8px;
+  border-bottom:2px dashed #9fb0d8;
+  font:700 13px 'Chakra Petch',sans-serif;
+  color:#2456d6;
+}
+
+.pp-top span {
+  color:#5a6a94;
+  font-weight:500;
+}
+
+.pp-title {
+  margin:12px 0 10px;
+  font:700 25px/1 'Chakra Petch',sans-serif;
+  color:#0b1f4d;
+}
+
+.pp-rows {
+  border-top:1px solid #cfd8ee;
+}
+
+.pp-r {
+  display:flex;
+  gap:10px;
+  align-items:baseline;
+  padding:6px 0;
+  border-bottom:1px solid #cfd8ee;
+}
+
+.pp-l {
+  flex:none;
+  width:112px;
+  font:700 13px 'Chakra Petch',sans-serif;
+  color:#5a6a94;
+}
+
+.pp-n {
+  flex:1;
+  font-weight:500;
+}
+
+.pp-r b {
+  font:700 15px 'Space Mono',monospace;
+}
+
+.pp-fps {
+  margin:12px 0;
+  padding:10px;
+  background:#0b1f4d;
+  color:#ffd23f;
+  border-radius:8px;
+  text-align:center;
+  font-size:22px;
+}
+
+.pp-total {
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-top:12px;
+  padding-top:10px;
+  border-top:2px solid #0b1f4d;
+  font:700 18px 'Chakra Petch',sans-serif;
+}
+
+.pp-total b {
+  font-size:26px;
+  color:#2456d6;
+}
+
+.pp-note {
+  margin:4px 0 0;
+  font-size:12px;
+  color:#5a6a94;
+}
+
+.pp-hint {
+  margin:14px 0 4px;
+  font-size:14px;
+  color:#5a6a94;
+  text-align:center;
+}
+
+.pp-qr {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:2px dashed #9fb0d8;
+}
+
+.pp-qr svg {
+  flex:none;
+  width:160px;
+  height:160px;
+  border:1px solid #cfd8ee;
+}
+
+.pp-qr span {
+  font-size:14px;
+  color:#34456f;
+}
+
+.pp-date {
+  margin-top:10px;
+  font-size:12px;
+  color:#5a6a94;
+  text-align:right;
+}
+
+.zig {
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  display:block;
+  width:100%;
+  height:8px;
+}
+
+.zig path {
+  fill:var(--p);
+}
+
+.acts {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.acts .btn {
+  flex:1;
+  margin:0;
+}
+
+.btn:disabled {
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+#qrdlg {
+  max-width:92vw;
+  padding:0;
+  border:0;
+  border-radius:18px;
+  background:#f3f6ff;
+  color:#0b1f4d;
+  text-align:center;
+}
+
+#qrdlg::backdrop {
+  background:rgba(3,8,24,.82);
+  backdrop-filter:blur(4px);
+}
+
+.qd {
+  padding:22px;
+}
+
+.qd h3 {
+  color:#0b1f4d;
+  font-size:24px;
+}
+
+.qd p {
+  max-width:30ch;
+  margin:6px auto 0;
+  color:#34456f;
+}
+
+#qrdlg {
+  width:min(92vw,420px);
+}
+
+.qd .qlink {
+  max-width:none;
+  margin:8px 0 0;
+  font-size:12px;
+  color:#34456f;
+  word-break:break-all;
+}
+
+.qlink a {
+  color:#2456d6;
+}
+
+.qsite {
+  margin:12px 0 4px;
+  text-align:left;
+}
+
+.qsite label {
+  display:block;
+  margin-bottom:4px;
+  font:700 13px 'Chakra Petch',sans-serif;
+  color:#0b1f4d;
+}
+
+.qsite input {
+  width:100%;
+  padding:9px 10px;
+  border-radius:8px;
+  border:1.5px solid #9fb0d8;
+  background:#fff;
+  color:#0b1f4d;
+  font:inherit;
+}
+
+.qd .qnote {
+  max-width:none;
+  margin:6px 0 0;
+  font-size:13px;
+  color:#34456f;
+}
+
+.qnote[hidden],
+.qlink[hidden],
+.qsite[hidden] {
+  display:none;
+}
+
+#qrbig {
+  width:min(76vw,300px);
+  margin:14px auto;
+}
+
+#qrbig svg {
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid #cfd8ee;
+}
+
+#printRoot {
+  display:none;
+}
+
+
+.row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+}
+
+
+/* ---------- Paneles, botones y barra ---------- */
+.panel {
+  background:var(--deep);
+  border:2px solid var(--line);
+  border-radius:12px;
+  padding:16px;
+  margin-top:20px;
+}
+
+.btn {
+  background:var(--a);
+  color:#060f26;
+  border:0;
+  border-radius:8px;
+  padding:10px 14px;
+  font:700 15px 'Chakra Petch',sans-serif;
+  cursor:pointer;
+  margin:8px 6px 0 0;
+}
+
+.btn.alt {
+  background:transparent;
+  color:var(--ink);
+  border:2px solid var(--line);
+}
+
+.btn.sel {
+  background:var(--b);
+  color:#060f26;
+}
+
+.bar {
+  height:16px;
+  background:var(--navy);
+  border-radius:8px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  margin:8px 0;
+}
+
+.bar i {
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--a);
+}
+
+
+/* ---------- 2. Armado (animación) ---------- */
+#v2svg {
+  width:100%;
+  height:auto;
+  border-radius:10px;
+}
+
+.video h3 {
+  color:var(--a);
+}
+
+.video p {
+  margin:4px 0;
+}
+
+.me {
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.inst {
+  font-weight: 700;
+  color: #fff;
+  background: var(--navy);
+  border-left: 4px solid var(--a);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.tip {
+  color:var(--b);
+}
+
+.parts {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  font-size:13px;
+  margin:8px 0;
+}
+
+.drop {
+  animation:drop .8s ease-out both;
+}
+
+.d1 {
+  animation-delay:.6s;
+}
+
+.d2 {
+  animation-delay:1.2s;
+}
+
+.fan {
+  transform-box:fill-box;
+  transform-origin:center;
+}
+
+.on .fan {
+  animation:spin .5s linear infinite;
+}
+
+.rgb {
+  opacity:.3;
+}
+
+.on .rgb {
+  opacity:1;
+  animation:rgb 4s linear infinite;
+}
+
+.glow {
+  opacity:0;
+}
+
+.on .glow {
+  opacity:1;
+}
+
+@keyframes drop {
+  from {
+    opacity:0;
+    transform:translateY(-40px);
+  }
+
+  to {
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+@keyframes spin {
+  to {
+    transform:rotate(360deg);
+  }
+
+}
+
+@keyframes rgb {
+  to {
+    filter:hue-rotate(360deg);
+  }
+
+}
+
+
+/* ---------- 3. Juego ---------- */
+.okc {
+  color:var(--cyan);
+}
+
+.qc {
+  font-size:18px;
+  margin:12px 0 0;
+}
+
+.qq {
+  font-weight:700;
+  margin:4px 0;
+}
+
+.qm {
+  min-height:48px;
+  margin-top:10px;
+}
+
+
+/* ---------- 4. Glosario: cartas con dibujo, concepto y voz ---------- */
+.search {
+  width:100%;
+  max-width:380px;
+  padding:11px 14px;
+  border-radius:10px;
+  border:1.5px solid var(--blue);
+  background:var(--navy);
+  color:#fff;
+  font:inherit;
+  margin:16px 0;
+}
+
+.gmsg {
+  min-height:24px;
+  margin:0 0 10px;
+  color:var(--b);
+  font-size:15px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:14px;
+  align-items:start;
+}
+
+.gcell {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.flip {
+  position:relative;
+  height:218px;
+  perspective:700px;
+  background:none;
+  border:0;
+  padding:0;
+  cursor:pointer;
+  font:inherit;
+  color:#fff;
+}
+
+.face {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:12px;
+  border-radius:14px;
+  text-align:center;
+  backface-visibility:hidden;
+  transition:transform .5s;
+}
+
+.face b {
+  font:700 16px/1.15 'Chakra Petch',sans-serif;
+}
+
+.face small {
+  font-size:13px;
+  line-height:1.35;
+  color:var(--sky);
+}
+
+.face.f {
+  background:var(--blue);
+  border:1px solid #3a63c9;
+}
+
+.face.b {
+  background:#1a3a8f;
+  border:1px solid #3a63c9;
+  transform:rotateY(180deg);
+}
+
+.flip.on .f {
+  transform:rotateY(-180deg);
+}
+
+.flip.on .b {
+  transform:rotateY(0);
+}
+
+.gi {
+  width:64px;
+  height:64px;
+  flex:none;
+  color:#fff;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.gi .ac {
+  stroke:var(--b);
+}
+
+.gaudio {
+  display:flex;
+  gap:6px;
+}
+
+.gaudio[hidden] {
+  display:none;
+}
+
+.gaudio button {
+  flex:1;
+  padding:8px 4px;
+  white-space:nowrap;
+  background:transparent;
+  color:#fff;
+  border:1.5px solid var(--cyan);
+  border-radius:8px;
+  font:700 13px 'Chakra Petch',sans-serif;
+  cursor:pointer;
+}
+
+.gaudio button:hover {
+  background:var(--blue);
+}
+
+
+.cf-end {
+  max-width:1040px;
+  margin:0 auto;
+  padding:48px 20px 8px;
+  text-align:center;
+}
+
+.cf-end .btn {
+  display:inline-block;
+  margin:0;
+  padding:14px 24px;
+  font-size:17px;
+  text-decoration:none;
+}
+
+.site {
+  margin-top:14px;
+  display:grid;
+  gap:6px;
+  text-align:left;
+}
+
+.site[hidden] {
+  display:none;
+}
+
+.site input {
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #2a559e;
+  background:#0b1f4d;
+  color:#fff;
+  font:inherit;
+}
+
+.site small {
+  opacity:.8;
+}
+
+/* ---------- Pie de página ---------- */
+footer {
+  padding:36px 20px;
+  text-align:center;
+  color:var(--sky);
+  border-top:1px solid #1d3f7a;
+}
+
+
+/* ---------- Celulares y accesibilidad ---------- */
+@media (max-width:820px) {
+  .lab {
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"pick" "rig" "side";
+  }
+
+  .lab-side {
+    position:static;
+  }
+
+  nav {
+    display:none;
+  }
+
+}
+
+@media (max-width:560px) {
+  .rig-in {
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  #tower {
+    max-width:210px;
+    margin:0 auto;
+  }
+
+  .pcs {
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    padding-bottom:8px;
+  }
+
+  .pc {
+    flex:0 0 142px;
+    scroll-snap-align:start;
+  }
+
+  .pp-qr {
+    flex-direction:column;
+    text-align:center;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+  .drop,
+  .sm-pop,
+  #tower.on .sm-glow,
+  .on .fan,
+  .on .rgb {
+    animation:none;
+  }
+
+}
+
+
+/* ---------- Impresión: solo la ficha ---------- */
+@media print {
+  @page {
+    margin:12mm;
+  }
+
+  html,
+  body {
+    background:#fff !important;
+  }
+
+  body > *:not(#printRoot) {
+    display:none !important;
+  }
+
+  #printRoot {
+    display:block !important;
+  }
+
+  #printRoot * {
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  #printRoot .paper {
+    max-width:440px;
+    margin:0 auto;
+    padding:22px;
+    background:#fff;
+    border:2px solid #0b1f4d;
+    border-radius:12px;
+    box-shadow:none;
+  }
+
+  #printRoot .zig {
+    display:none;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <b>Expo Técnica 2026</b>
+    <nav id="nav"></nav>
+    <div class="lang">
+      <button data-l="es" aria-pressed="true">ES</button>
+      <button data-l="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <!-- TÍTULO -->
+  <section class="top">
+    <h1>Build Your <span>Dream PC</span></h1>
+    <p class="slogan" data-t="slogan"></p>
+  </section>
+
+  <!-- 1. SIMULADOR: piezas + PC en vivo + ficha (imprimir / QR) + moneda -->
+  <div class="band">
+    <section id="build">
+      <h2 data-t="s1"></h2>
+      <p class="lead" data-t="s1p"></p>
+      <div class="lab">
+        <div id="opts"></div>
+        <div class="rig" id="rig"></div>
+        <aside class="lab-side">
+          <div class="cur">
+            <div class="seg">
+              <button data-cur="USD" data-t="curUsd" aria-pressed="true"></button>
+              <button data-cur="ARS" data-t="curArs" aria-pressed="false"></button>
+            </div>
+            <label class="rate" id="rateRow" hidden><span data-t="rateL"></span> <input id="rate" type="number" min="1" step="1" inputmode="numeric"></label>
+          </div>
+          <div id="ficha"></div>
+          <div class="acts">
+            <button class="btn" data-act="print" data-t="prn" disabled></button>
+            <button class="btn alt" data-act="img" data-t="imgb" disabled></button>
+            <button class="btn alt" data-act="qr" data-t="qrb" disabled></button>
+          </div>
+          <div class="site" id="siteBox" hidden>
+            <label for="siteurl2" data-t="siteL"></label>
+            <input id="siteurl2" type="url" inputmode="url" placeholder="http://192.168.1.20:5501/" autocomplete="off" spellcheck="false">
+            <small data-t="siteH"></small>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2. CÓMO ARMAR TU PC (animación paso a paso) -->
+  <section id="video">
+    <h2 data-t="s2"></h2>
+    <p class="lead" data-t="s2p"></p>
+    <div class="panel video">
+      <p id="v2me" class="me"></p>
+      <svg id="v2svg" viewBox="0 0 480 300" role="img" aria-label="Animación del armado de PC"></svg>
+      <div class="bar"><i id="v2b2"></i></div>
+      <h3 id="v2t"></h3>
+      <p id="v2b"></p>
+      <p id="v2i" class="inst"></p>
+      <p id="v2k" class="tip"></p>
+      <div id="v2l" class="parts"></div>
+      <div id="v2n"></div>
+      <button class="btn alt" id="v2prev" aria-label="Anterior">◀</button>
+      <button class="btn" id="v2play"></button>
+      <button class="btn alt" id="v2next" aria-label="Siguiente">▶|</button>
+    </div>
+  </section>
+
+  <!-- 3. JUEGO: Bottleneck Hunter -->
+  <div class="band">
+    <section id="game">
+      <h2 data-t="s3"></h2>
+      <p class="lead" data-t="s3p"></p>
+      <div class="panel">
+        <div class="row">
+          <b id="qr"></b>
+          <span><span id="sl"></span> <b id="sc" class="okc">0</b> · <span id="stl"></span> <b id="st">0</b></span>
+        </div>
+        <p id="qc" class="qc"></p>
+        <p id="qq" class="qq"></p>
+        <div id="qa"></div>
+        <p id="qm" class="qm"></p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. GLOSARIO: cartas con dibujo, concepto y voz -->
+  <section id="gloss">
+    <h2 data-t="s4"></h2>
+    <p class="lead" data-t="s4p"></p>
+    <input class="search" id="q" type="search">
+    <p class="gmsg" id="gmsg" role="status"></p>
+    <div class="grid" id="gl"></div>
+  </section>
+
+  <!-- ÚNICO BOTÓN: lleva a la carpeta de campo -->
+  <div class="cf-end">
+    <a class="btn" href="carpeta-de-campo/index.html" data-t="cfB"></a>
+  </div>
+
+  <footer data-t="foot"></footer>
+
+  <!-- QR grande para escanear desde la pantalla -->
+  <dialog id="qrdlg" aria-labelledby="qrt">
+    <div class="qd">
+      <h3 id="qrt" data-t="qrT"></h3>
+      <div id="qrbig"></div>
+      <p data-t="qrH"></p>
+      <p class="qlink" id="qrlink" hidden></p>
+      <div class="qsite" id="qrsite" hidden>
+        <label for="siteurl" data-t="qrSiteL"></label>
+        <input id="siteurl" type="url" inputmode="url" placeholder="https://tuusuario.github.io/expo/" autocomplete="off" spellcheck="false">
+        <p class="qnote" id="qrnote" data-t="qrSiteN" hidden></p>
+      </div>
+      <button class="btn" data-act="qrclose" data-t="close"></button>
+    </div>
+  </dialog>
+
+  <!-- Copia de la ficha que se arma solo al imprimir -->
+  <div id="printRoot"></div>
+
+  <script>
+/* =========================================================
+   core.js — estado compartido y atajos (se carga primero)
+   ========================================================= */
+
+let L = 'es';                                   // idioma actual: 'es' o 'en'
+const sel = { c: null, g: null, r: null };      // CPU, GPU y RAM elegidas (posición en las listas)
+
+const $ = id => document.getElementById(id);
+const t = () => T[L];                           // textos del idioma actual
+const tr = (es, en) => (L === 'en' ? en : es);  // elige el texto según el idioma
+
+// FPS reales: el CPU y la RAM pueden limitar a la placa de video
+const fpsOf = (c, g, r) => Math.round(Math.min(g.fps, c.cap) * r.f);
+
+// Nivel de rendimiento según los FPS (0 = Básico ... 4 = Ultra)
+const tierOf = fps => [0, 60, 85, 110, 140].filter(x => fps >= x).length - 1;
+const perfOf = fps => t().perfL[tierOf(fps)];
+
+// Moneda elegida y cotización (pesos por cada dólar)
+let CUR = 'USD';                                // 'USD' o 'ARS'
+let RATE = 1535;                                // dólar oficial Banco Nación, venta, 10/10/2026 (se cambia en la página)
+try { const r = +localStorage.getItem('rate'); if (r > 0) RATE = r; } catch (e) {}
+
+const money = n => CUR === 'ARS'
+  ? 'AR$ ' + Math.round(n * RATE).toLocaleString('es-AR')
+  : 'US$ ' + n;
+
+// Dirección pública de tu página, para que el QR abra la ficha (ficha.html) en el celular.
+// Ejemplo: 'https://tuusuario.github.io/expo/'
+// Si la dejás vacía, el QR usa la dirección de la página actual; y si la abrís desde tu
+// compu (localhost o archivo), el simulador te pide la dirección en la ventana del QR.
+const SITE_URL = '';
+
+</script>
+  <script>
+/* =========================================================
+   data.js — textos (español e inglés) y datos de la página
+   Para cambiar un texto o un precio, buscalo acá.
+   ========================================================= */
+
+const T = {
+
+  /* ======================== ESPAÑOL ======================== */
+  es: {
+
+    // ---- Menú y títulos ----
+    nav: ["Simulador", "Armado", "Juego", "Glosario"],
+    slogan: "¿Cuántos FPS tenés?",
+    s1: "1. Simulador de PC y presupuesto",
+    s1p: "Tocá una pieza de cada grupo. Mirá cómo se arma tu PC, cuántos FPS da y cuánto cuesta, en dólares o en pesos. Después imprimí la ficha o escaneá el QR.",
+
+    // ---- Simulador ----
+    gc: "Procesador (CPU)",
+    gg: "Placa de video (GPU)",
+    gr: "Memoria (RAM)",
+    rigT: "Tu PC en vivo",
+    fl: ["CPU", "GPU", "RAM"],
+    empty: "Elegí los tres componentes.",
+    perfL: ["Básico", "Entrada", "Medio", "Alto", "Ultra"],
+    bn: "Cuello de botella: el procesador es lento para esa placa de video. Probá un CPU más potente.",
+    ok: "Gran rendimiento, sin cuello de botella.",
+    liq: "Para altos FPS necesitás refrigeración líquida (240mm).",
+    dual: "Dos módulos de 8GB en dual channel rinden hasta 20% más.",
+    mon: "Ojo: con un monitor de 60Hz solo ves hasta 60 FPS, aunque tu PC pueda dar más.",
+
+    // ---- Ficha (pantalla, impresión y QR) ----
+    sheetT: "Ficha técnica",
+    fPsu: "Fuente",
+    fCool: "Refrigeración",
+    fBn: "Cuello de botella",
+    coolLiq: "Líquida 240mm",
+    coolAir: "Por aire",
+    yes: "Sí",
+    no: "No",
+    bdTot: "TOTAL",
+    bdNote: "Precios estimados en dólares, solo de los componentes elegidos.",
+    bdNoteArs: "Precios estimados en pesos argentinos, según la cotización que escribas.",
+    curUsd: "US$ Dólar",
+    curArs: "AR$ Peso",
+    rateL: "1 US$ = AR$",
+    sheetRate: "Cotización",
+    needAll: "Elegí CPU, GPU y RAM para ver la ficha completa, imprimirla o escanearla.",
+    scanTxt: "Escaneá con el celular y descargá tu tarjeta con la PC armada y el presupuesto.",
+    scanTxtPlain: "Este QR muestra tu PC como texto. Para que abra la tarjeta descargable, escribí la dirección de la página debajo de los botones.",
+    prn: "🖨️ Imprimir ficha",
+    qrb: "📱 Ver QR grande",
+    qrT: "Escaneá tu ficha",
+    qrH: "Abrí la cámara del celular y apuntá al código. Se abre tu tarjeta con la PC armada y el presupuesto, lista para descargar.",
+    close: "Cerrar",
+    cfL: "Carpeta de campo",
+    cfB: "📁 Ir a la carpeta de campo",
+    imgb: "⬇️ Descargar imagen",
+    siteL: "Dirección de la página (para el QR)",
+    siteH: "El celular tiene que poder abrirla: usá la dirección de red de Live Server (http://192.168.x.x:5501, mismo Wi-Fi) o la de tu página publicada.",
+    qrSiteL: "Dirección pública de tu página",
+    qrSiteN: "Para que el QR abra la tarjeta descargable, pegá acá la dirección donde publicaste la página (por ejemplo https://tuusuario.github.io/expo/). Tiene que ser una dirección que el celular pueda abrir.",
+    qrOpens: "El QR abre esta ficha:",
+
+    // ---- Armado (video) ----
+    s2: "2. Cómo armar tu PC",
+    s2p: "Elegí tus componentes arriba y mirá cómo se arma, paso a paso.",
+
+    // ---- Juego ----
+    s3: "3. Juego: Bottleneck Hunter",
+    s3p: "Te mostramos una PC. Adiviná sus FPS y si tiene cuello de botella. 8 rondas, ¡armá racha!",
+
+    // ---- Glosario y pie ----
+    s4: "4. Glosario técnico",
+    s4p: "30 términos bilingües con dibujo. Tocá una carta para ver la traducción y escucharla en inglés y español.",
+    sp: "Buscar un término…",
+    noVoice: "Tu navegador no puede leer en voz alta.",
+    noVoiceEs: "Tu dispositivo no tiene una voz en español instalada.",
+    noVoiceEn: "Tu dispositivo no tiene una voz en inglés instalada.",
+    foot: "Expo Técnica · Noviembre 2026 · Build Your Dream PC",
+  },
+
+  /* ======================== ENGLISH ======================== */
+  en: {
+
+    // ---- Menú y títulos ----
+    nav: ["Simulator", "Build", "Game", "Glossary"],
+    slogan: "What is your FPS?",
+    s1: "1. PC simulator & budget",
+    s1p: "Tap one part in each group. Watch your PC come together, see its FPS and its price, in dollars or pesos. Then print the sheet or scan the QR.",
+
+    // ---- Simulador ----
+    gc: "Processor (CPU)",
+    gg: "Graphics card (GPU)",
+    gr: "Memory (RAM)",
+    rigT: "Your PC, live",
+    fl: ["CPU", "GPU", "RAM"],
+    empty: "Pick all three components.",
+    perfL: ["Basic", "Entry", "Medium", "High", "Ultra"],
+    bn: "Bottleneck: the processor is too slow for that graphics card. Try a stronger CPU.",
+    ok: "Great performance, no bottleneck.",
+    liq: "For high FPS you need liquid cooling (240mm).",
+    dual: "Two 8GB sticks in dual channel give up to 20% more FPS.",
+    mon: "Careful: with a 60Hz monitor you only see up to 60 FPS, even if your PC can give more.",
+
+    // ---- Ficha (pantalla, impresión y QR) ----
+    sheetT: "Tech sheet",
+    fPsu: "PSU",
+    fCool: "Cooling",
+    fBn: "Bottleneck",
+    coolLiq: "Liquid 240mm",
+    coolAir: "Air",
+    yes: "Yes",
+    no: "No",
+    bdTot: "TOTAL",
+    bdNote: "Estimated prices in dollars, only for the chosen parts.",
+    bdNoteArs: "Estimated prices in Argentine pesos, using the rate you enter.",
+    curUsd: "US$ Dollar",
+    curArs: "AR$ Peso",
+    rateL: "1 US$ = AR$",
+    sheetRate: "Rate",
+    needAll: "Pick CPU, GPU and RAM to see the full sheet, print it or scan it.",
+    scanTxt: "Scan with your phone and download your card with your PC build and budget.",
+    scanTxtPlain: "This QR shows your PC as text. To open the downloadable card, enter the page address below the buttons.",
+    prn: "🖨️ Print sheet",
+    qrb: "📱 Show big QR",
+    qrT: "Scan your sheet",
+    qrH: "Open your phone camera and point it at the code. Your card opens with your PC build and budget, ready to download.",
+    close: "Close",
+    cfL: "Field folder",
+    cfB: "📁 Go to the field folder",
+    imgb: "⬇️ Download image",
+    siteL: "Page address (for the QR)",
+    siteH: "The phone must be able to open it: use the Live Server network address (http://192.168.x.x:5501, same Wi-Fi) or your published page.",
+    qrSiteL: "Public address of your page",
+    qrSiteN: "For the QR to open the downloadable card, paste the address where you published the page (for example https://yourname.github.io/expo/). It must be an address the phone can open.",
+    qrOpens: "The QR opens this card:",
+
+    // ---- Armado (video) ----
+    s2: "2. How to build your PC",
+    s2p: "Pick your parts above and watch the build, step by step.",
+
+    // ---- Juego ----
+    s3: "3. Game: Bottleneck Hunter",
+    s3p: "We show you a PC. Guess its FPS and whether it has a bottleneck. 8 rounds, build a streak!",
+
+    // ---- Glosario y pie ----
+    s4: "4. Technical glossary",
+    s4p: "30 bilingual terms with drawings. Tap a card to see the translation and listen to it in English and Spanish.",
+    sp: "Search a term…",
+    noVoice: "Your browser cannot read aloud.",
+    noVoiceEs: "Your device has no Spanish voice installed.",
+    noVoiceEn: "Your device has no English voice installed.",
+    foot: "Technical Expo · November 2026 · Build Your Dream PC",
+  },
+};
+
+/* ---------- Componentes ---------- */
+// n = nombre, p = precio en dólares (estimado)
+// cap = FPS máximos que deja pasar el CPU | fps = FPS de la placa de video
+// f = factor de la RAM (8GB limita un poco) | dual = RAM en dual channel (2x8) | c = color
+const CPU = [
+  { n: 'Intel Pentium', p: 70, cap: 50, c: '#6b7280' },
+  { n: 'Intel Core i3', p: 120, cap: 80, c: '#2563eb' },
+  { n: 'Intel Core i5', p: 180, cap: 125, c: '#0ea5e9' },
+  { n: 'Intel Core i7', p: 320, cap: 160, c: '#6d28d9' },
+  { n: 'Ryzen 5', p: 160, cap: 125, c: '#f97316' },
+  { n: 'Ryzen 7', p: 280, cap: 160, c: '#dc2626' },
+];
+
+const GPU = [
+  { n: 'GTX 1650', p: 160, fps: 45, c: '#16a34a' },
+  { n: 'RTX 3050', p: 250, fps: 75, c: '#db2777' },
+  { n: 'RTX 3060', p: 330, fps: 90, c: '#a21caf' },
+  { n: 'RTX 4060', p: 380, fps: 120, c: '#7c3aed' },
+  { n: 'RTX 4070', p: 580, fps: 144, c: '#4f46e5' },
+];
+
+const RAM = [
+  { n: '8GB DDR4', p: 30, f: 0.85, dual: false },
+  { n: '16GB DDR4 (2x8)', p: 60, f: 1, dual: true },
+  { n: '32GB DDR4', p: 110, f: 1, dual: false },
+  { n: '16GB DDR5', p: 85, f: 1, dual: false },
+];
+
+/* ---------- Glosario (30 términos) ----------
+   [inglés, español, dibujo (icons.js), concepto en español, concepto en inglés] */
+const G = [
+  ["Motherboard", "Placa madre", "motherboard",
+    "Placa principal donde se conectan el CPU, la RAM y las demás piezas.",
+    "Main board where the CPU, RAM and the other parts connect."],
+  ["CPU / Processor", "Procesador", "cpu",
+    "El cerebro de la PC: ejecuta las instrucciones.",
+    "The brain of the PC: it runs the instructions."],
+  ["GPU / Graphics Card", "Placa de video", "gpu",
+    "Crea las imágenes y los gráficos de los juegos.",
+    "It creates the images and graphics of games."],
+  ["RAM / Memory", "Memoria", "ram",
+    "Memoria rápida y temporal para lo que usás ahora.",
+    "Fast, temporary memory for what you are using now."],
+  ["PSU / Power Supply", "Fuente", "psu",
+    "Reparte la electricidad a todos los componentes.",
+    "It supplies electricity to every component."],
+  ["Storage", "Almacenamiento", "storage",
+    "Guarda tus archivos y programas (SSD o disco).",
+    "It keeps your files and programs (SSD or hard drive)."],
+  ["BIOS", "BIOS", "bios",
+    "Programa inicial que enciende y revisa el hardware.",
+    "Startup program that checks and starts the hardware."],
+  ["Driver", "Controlador", "driver",
+    "Programa que permite al sistema usar una pieza.",
+    "Software that lets the system use a part."],
+  ["Format", "Formatear", "format",
+    "Borrar un disco y prepararlo para usarlo de nuevo.",
+    "To erase a drive and get it ready to use again."],
+  ["Overheating", "Sobrecalentamiento", "overheating",
+    "Demasiado calor: baja los FPS y puede dañar piezas.",
+    "Too much heat: it drops FPS and can damage parts."],
+  ["Thermal Paste", "Pasta térmica", "thermalpaste",
+    "Pasta que pasa el calor del CPU al cooler.",
+    "Paste that moves heat from the CPU to the cooler."],
+  ["Bottleneck", "Cuello de botella", "bottleneck",
+    "Una pieza lenta frena el rendimiento de las demás.",
+    "One slow part holds back all the others."],
+  ["Upgrade", "Mejora", "upgrade",
+    "Cambiar una pieza por otra mejor.",
+    "To swap a part for a better one."],
+  ["FPS / Frames Per Second", "Cuadros por segundo", "fps",
+    "Cuántas imágenes por segundo muestra el juego.",
+    "How many images per second the game shows."],
+  ["Lag", "Retraso / Tirón", "lag",
+    "Demora o tirones entre tu acción y lo que ves en pantalla.",
+    "Delay or stutter between your action and the screen."],
+  ["Build", "Armado de PC", "build",
+    "Armar una PC eligiendo y montando cada pieza.",
+    "Putting a PC together by choosing and installing each part."],
+  ["Benchmark", "Prueba de rendimiento", "benchmark",
+    "Prueba que mide qué tan rápida es una PC.",
+    "A test that measures how fast a PC is."],
+  ["Install", "Instalar", "install",
+    "Poner un programa o una pieza para que funcione.",
+    "To set up a program or a part so it works."],
+  ["Backup", "Copia de seguridad", "backup",
+    "Copia extra de tus archivos por si algo falla.",
+    "An extra copy of your files in case something fails."],
+  ["Bug", "Error", "bug",
+    "Falla en un programa que lo hace funcionar mal.",
+    "A flaw in a program that makes it work wrong."],
+  ["Crash", "Cuelgue", "crash",
+    "El programa o la PC se traba o se cierra de golpe.",
+    "The program or the PC freezes or shuts down suddenly."],
+  ["Cooling", "Refrigeración", "cooling",
+    "Sistema que saca el calor de los componentes.",
+    "System that removes heat from the components."],
+  ["Case", "Gabinete", "case",
+    "La caja que sostiene y protege todas las piezas.",
+    "The box that holds and protects all the parts."],
+  ["Slot", "Ranura", "slot",
+    "Lugar de la placa donde se inserta una pieza.",
+    "Place on the board where a part is inserted."],
+  ["Cable Management", "Orden de cables", "cable",
+    "Ordenar los cables para que circule mejor el aire.",
+    "Tidying the cables so air flows better."],
+  ["Update", "Actualización", "update",
+    "Versión nueva con mejoras o arreglos.",
+    "A newer version with improvements or fixes."],
+  ["Setup", "Configuración / Escritorio gamer", "setup",
+    "La configuración de la PC o tu escritorio gamer completo.",
+    "The configuration of the PC or your complete gaming desk."],
+  ["Peripheral", "Periférico", "peripheral",
+    "Dispositivo externo: teclado, mouse o monitor.",
+    "External device: keyboard, mouse or monitor."],
+  ["Performance", "Rendimiento", "performance",
+    "Qué tan bien y qué tan rápido funciona la PC.",
+    "How well and how fast the PC works."],
+  ["Liquid Cooling / Air Cooling / AIO", "Refrigeración líquida / por aire", "liquid",
+    "Enfriar con líquido y radiador (AIO es el kit armado) o con aire.",
+    "Cooling with liquid and a radiator (AIO is the ready kit) or with air."],
+];
+
+
+/* =========================================================
+   Textos de la ficha que se ve al escanear el QR (ficha.html)
+   Las etiquetas que se repiten (CPU, FPS, fuente, total...) salen de T.
+   ========================================================= */
+const FT = {
+  es: {
+    brand: 'Expo Técnica 2026',
+    kicker: 'Build Your Dream PC',
+    rar: ['Común', 'Poco común', 'Rara', 'Épica', 'Legendaria'],
+    names: ['La Principiante', 'La Promesa', 'La Equilibrada', 'La Cazadora de FPS', 'La Bestia Ultra'],
+    idealT: 'Pensada para',
+    ideal: [
+      'Navegar, estudiar y juegos muy livianos.',
+      'Juegos populares en calidad baja o media.',
+      'Juegos actuales en calidad media, bien fluidos.',
+      'Juegos exigentes en calidad alta.',
+      'Calidad máxima y monitores de alta frecuencia.',
+    ],
+    statsT: 'Los números de tu PC',
+    sCpu: 'Procesador',
+    sGpu: 'Placa de video',
+    sRam: 'Memoria',
+    tipsT: 'Consejos del técnico',
+    budT: 'Presupuesto',
+    rateNote: 'Cotización al armar la PC: 1 US$ = AR$ {r}.',
+    approx: 'aprox.',
+    learnT: 'Inglés técnico de tu PC',
+    learnP: 'Tocá 🔊 para escuchar cada palabra.',
+    noVoice: 'Tu celular no puede leer en voz alta.',
+    noVoiceEs: 'Tu celular no tiene una voz en español instalada.',
+    noVoiceEn: 'Tu celular no tiene una voz en inglés instalada.',
+    share: '📤 Compartir',
+    print: '🖨️ Guardar PDF',
+    again: '🔧 Armar otra PC',
+    copied: 'Link copiado',
+    shareText: 'Armé mi PC soñada en la Expo Técnica: {n} · {f} FPS',
+    foot1: 'Stand “Build Your Dream PC”',
+    foot2: 'Escuela Provincial de Comercio Nº 2 “Inspector Carlos Lanzillotto”',
+    disc: 'Estimaciones del simulador de la Expo: no son mediciones reales ni precios de venta.',
+    badT: 'No pudimos leer esta ficha',
+    badP: 'Escaneá el QR otra vez o armá tu PC de nuevo.',
+  },
+  en: {
+    brand: 'Technical Expo 2026',
+    kicker: 'Build Your Dream PC',
+    rar: ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'],
+    names: ['The Beginner', 'The Rising Star', 'The Balanced One', 'The FPS Hunter', 'The Ultra Beast'],
+    idealT: 'Made for',
+    ideal: [
+      'Browsing, studying and very light games.',
+      'Popular games on low or medium settings.',
+      'Current games on medium settings, running smoothly.',
+      'Demanding games on high settings.',
+      'Maximum quality and high refresh rate monitors.',
+    ],
+    statsT: 'Your PC in numbers',
+    sCpu: 'Processor',
+    sGpu: 'Graphics card',
+    sRam: 'Memory',
+    tipsT: 'Technician tips',
+    budT: 'Budget',
+    rateNote: 'Rate when the PC was built: 1 US$ = AR$ {r}.',
+    approx: 'approx.',
+    learnT: 'Technical English for your PC',
+    learnP: 'Tap 🔊 to hear each word.',
+    noVoice: 'Your phone cannot read aloud.',
+    noVoiceEs: 'Your phone has no Spanish voice installed.',
+    noVoiceEn: 'Your phone has no English voice installed.',
+    share: '📤 Share',
+    print: '🖨️ Save PDF',
+    again: '🔧 Build another PC',
+    copied: 'Link copied',
+    shareText: 'I built my dream PC at the Technical Expo: {n} · {f} FPS',
+    foot1: 'Stand “Build Your Dream PC”',
+    foot2: 'Escuela Provincial de Comercio Nº 2 “Inspector Carlos Lanzillotto”',
+    disc: 'Estimates from the Expo simulator: not real measurements or sale prices.',
+    badT: 'We could not read this card',
+    badP: 'Scan the QR again or build your PC again.',
+  },
+};
+
+</script>
+  <script>
+/* =========================================================
+   icons.js — dibujos de los componentes para las cartas del glosario
+   Cada dibujo es un SVG de 64x64 con líneas finas.
+   La clase "ac" pinta una parte en amarillo para destacarla.
+   ========================================================= */
+
+const ICONS = {
+  motherboard: `<rect x="8" y="8" width="48" height="48" rx="4"/><rect x="16" y="16" width="17" height="17" class="ac"/><path d="M41 14v22M46 14v22M51 14v22M14 46h28M14 40h10"/><circle cx="50" cy="48" r="3"/>`,
+
+  cpu: `<rect x="16" y="16" width="32" height="32" rx="3"/><rect x="25" y="25" width="14" height="14" class="ac"/><path d="M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8"/>`,
+
+  gpu: `<rect x="6" y="18" width="52" height="26" rx="3"/><circle cx="21" cy="31" r="8" class="ac"/><circle cx="43" cy="31" r="8"/><path d="M21 25v12M15 31h12M43 25v12M37 31h12M12 44v6h22v-6M58 24h3"/>`,
+
+  ram: `<rect x="5" y="20" width="54" height="22" rx="2"/><rect x="11" y="25" width="9" height="12" class="ac"/><rect x="24" y="25" width="9" height="12"/><rect x="37" y="25" width="9" height="12"/><path d="M8 42v6h22v-3h4v3h22v-6"/>`,
+
+  psu: `<rect x="6" y="14" width="46" height="36" rx="4"/><circle cx="22" cy="32" r="11"/><path d="M22 23v18M13 32h18M16 26l12 12M28 26L16 38"/><path d="M43 22l-4 10h6l-4 10" class="ac"/><path d="M52 26h8M52 38h8"/>`,
+
+  storage: `<rect x="10" y="10" width="44" height="44" rx="5"/><rect x="16" y="16" width="32" height="14" class="ac"/><path d="M18 38h28M18 44h18"/><circle cx="16" cy="48" r="1.5"/><circle cx="48" cy="48" r="1.5"/>`,
+
+  bios: `<rect x="12" y="16" width="40" height="32" rx="3"/><path d="M5 24h7M5 32h7M5 40h7M52 24h7M52 32h7M52 40h7"/><text x="32" y="37" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor" stroke="none" font-family="Chakra Petch,sans-serif">BIOS</text><circle cx="17" cy="21" r="1.6" class="ac"/>`,
+
+  driver: `<circle cx="32" cy="32" r="9" class="ac"/><circle cx="32" cy="32" r="16"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6"/>`,
+
+  format: `<circle cx="29" cy="35" r="19"/><circle cx="29" cy="35" r="5" class="ac"/><path d="M46 6l11 11M57 6L46 17" class="ac"/>`,
+
+  overheating: `<rect x="14" y="6" width="12" height="34" rx="6"/><circle cx="20" cy="46" r="9"/><path d="M20 20v26" class="ac"/><path d="M43 52c-8-3-7-11-2-17 1 4 4 5 6 8 2-2 2-5 1-8 8 6 7 17-5 17z"/>`,
+
+  thermalpaste: `<rect x="10" y="20" width="32" height="14" rx="2"/><path d="M10 27H5M5 21v12M42 24h8l4 3-4 3h-8M16 20v14M22 20v14"/><path d="M52 37c-3 4-4 7-1 9 3 1 5-2 1-9z" class="ac"/><path d="M8 56h48"/>`,
+
+  bottleneck: `<path d="M22 56h20V32l-6-8V10h-8v14l-6 8z"/><path d="M26 10h12"/><path d="M6 34h12M12 28l6 6-6 6" class="ac"/><path d="M26 44h12"/>`,
+
+  upgrade: `<path d="M32 8L16 26h10v16h12V26h10z" class="ac"/><path d="M14 52h36M20 58h24"/>`,
+
+  fps: `<rect x="5" y="8" width="54" height="36" rx="3"/><path d="M24 54h16M32 44v10"/><text x="32" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" stroke="none" font-family="Chakra Petch,sans-serif">FPS</text><path d="M11 36l9-6 8 4 9-9 7 6 8-4" class="ac"/>`,
+
+  lag: `<path d="M18 8h28M18 56h28"/><path d="M21 8c0 13 11 14 11 24S21 43 21 56M43 8c0 13-11 14-11 24s11 11 11 24"/><path d="M26 50h12l-6-8z" class="ac"/>`,
+
+  build: `<path d="M40 8a12 12 0 0 0-11 17L9 45a6 6 0 0 0 9 9l20-20a12 12 0 0 0 17-11l-9 4-7-7 4-9z"/><circle cx="14" cy="50" r="2" class="ac"/>`,
+
+  benchmark: `<path d="M8 8v46h52"/><rect x="14" y="36" width="8" height="18"/><rect x="26" y="24" width="8" height="30" class="ac"/><rect x="38" y="31" width="8" height="23"/><rect x="50" y="42" width="8" height="12"/>`,
+
+  install: `<path d="M32 8v28M20 26l12 12 12-12" class="ac"/><path d="M10 40v14h44V40"/>`,
+
+  backup: `<path d="M18 46a10 10 0 0 1-1-20 14 14 0 0 1 27-2 11 11 0 0 1 3 22z"/><path d="M32 40V27M26 33l6-6 6 6" class="ac"/>`,
+
+  bug: `<ellipse cx="32" cy="37" rx="10" ry="15"/><circle cx="32" cy="18" r="5"/><path d="M29 14l-5-6M35 14l5-6M22 30L11 25M22 38L9 40M24 47L14 56M42 30l11-5M42 38l13 2M40 47l10 9"/><path d="M32 24v26" class="ac"/>`,
+
+  crash: `<rect x="6" y="8" width="52" height="36" rx="3"/><path d="M24 54h16M32 44v10"/><path d="M24 17l16 18M40 17L24 35" class="ac"/>`,
+
+  cooling: `<circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="5" class="ac"/><path d="M32 27c0-9 4-14 10-14 2 8-2 14-10 14z"/><path d="M32 27c0-9 4-14 10-14 2 8-2 14-10 14z" transform="rotate(90 32 32)"/><path d="M32 27c0-9 4-14 10-14 2 8-2 14-10 14z" transform="rotate(180 32 32)"/><path d="M32 27c0-9 4-14 10-14 2 8-2 14-10 14z" transform="rotate(270 32 32)"/>`,
+
+  case: `<rect x="16" y="4" width="32" height="56" rx="4"/><path d="M22 12h20M22 18h20"/><circle cx="32" cy="38" r="8" class="ac"/><circle cx="32" cy="52" r="2"/>`,
+
+  slot: `<rect x="6" y="36" width="52" height="8" rx="2"/><path d="M34 36v8"/><rect x="14" y="10" width="36" height="20" rx="2"/><path d="M18 30v8M24 30v8M30 30v8M36 30v8M42 30v8" class="ac"/>`,
+
+  cable: `<path d="M5 18c14 0 14 12 27 12s13-12 27-12"/><path d="M5 30c14 0 14 12 27 12s13-12 27-12"/><path d="M5 42c14 0 14 12 27 12s13-12 27-12" class="ac"/><rect x="28" y="14" width="8" height="42" rx="2"/>`,
+
+  update: `<path d="M52 28a20 20 0 0 0-36-8M12 36a20 20 0 0 0 36 8"/><path d="M14 8v12h12M50 56V44H38" class="ac"/>`,
+
+  setup: `<rect x="14" y="6" width="36" height="26" rx="2"/><path d="M32 32v8M24 40h16"/><rect x="6" y="46" width="34" height="9" rx="2"/><path d="M12 50h2M18 50h2M24 50h2M30 50h2"/><rect x="46" y="44" width="10" height="14" rx="5" class="ac"/>`,
+
+  peripheral: `<rect x="3" y="28" width="38" height="22" rx="3"/><path d="M9 35h3M16 35h3M23 35h3M30 35h3M9 43h24"/><rect x="46" y="24" width="14" height="26" rx="7" class="ac"/><path d="M53 24v9M53 24c0-8 4-11 0-16"/>`,
+
+  performance: `<path d="M10 46a22 22 0 1 1 44 0"/><path d="M32 46l12-16" class="ac"/><circle cx="32" cy="46" r="3"/><path d="M14 30l3 2M32 20v4M50 30l-3 2"/>`,
+
+  liquid: `<path d="M22 6C14 18 10 25 10 33a12 12 0 0 0 24 0c0-8-4-15-12-27z" class="ac"/><rect x="42" y="12" width="16" height="42" rx="3"/><path d="M46 20h8M46 28h8M46 36h8M46 44h8"/><path d="M34 33h8"/>`,
+};
+
+// Devuelve el dibujo listo para poner en una carta
+const icon = name =>
+  `<svg class="gi" viewBox="0 0 64 64" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+
+</script>
+  <script>
+/* =========================================================
+   qr.js — generador de códigos QR (propio, sin librerías)
+   Modo byte, corrección de errores nivel M, versiones 1 a 40.
+   Uso: const q = QR.make('texto');  q.n = lado en módulos
+        q.dark(fila, columna) → true si el módulo es negro
+   ========================================================= */
+
+const QR = (() => {
+  // Tablas del estándar para el nivel M (posición = versión)
+  const ECC = [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28];
+  const BLK = [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45, 47, 49];
+
+  // Módulos que quedan para datos + corrección en cada versión
+  const rawModules = v => {
+    let r = (16 * v + 128) * v + 64;
+    if (v >= 2) {
+      const a = Math.floor(v / 7) + 2;
+      r -= (25 * a - 10) * a - 55;
+      if (v >= 7) r -= 36;
+    }
+    return r;
+  };
+  const dataWords = v => Math.floor(rawModules(v) / 8) - ECC[v] * BLK[v];
+
+  // ---- Corrección de errores (Reed-Solomon en GF(256)) ----
+  const mul = (x, y) => {
+    let z = 0;
+    for (let i = 7; i >= 0; i--) {
+      z = (z << 1) ^ ((z >>> 7) * 0x11D);
+      z ^= ((y >>> i) & 1) * x;
+    }
+    return z;
+  };
+  const rsGen = degree => {
+    const r = new Array(degree).fill(0);
+    r[degree - 1] = 1;
+    let root = 1;
+    for (let i = 0; i < degree; i++) {
+      for (let j = 0; j < r.length; j++) {
+        r[j] = mul(r[j], root);
+        if (j + 1 < r.length) r[j] ^= r[j + 1];
+      }
+      root = mul(root, 2);
+    }
+    return r;
+  };
+  const rsRem = (data, gen) => {
+    const res = new Array(gen.length).fill(0);
+    for (const b of data) {
+      const f = b ^ res.shift();
+      res.push(0);
+      gen.forEach((c, i) => { res[i] ^= mul(c, f); });
+    }
+    return res;
+  };
+
+  // Posiciones de los cuadritos de alineación
+  const alignPos = v => {
+    if (v === 1) return [];
+    const n = Math.floor(v / 7) + 2, size = v * 4 + 17;
+    const step = Math.floor((v * 8 + n * 3 + 5) / (n * 4 - 4)) * 2;
+    const r = [6];
+    for (let p = size - 7; r.length < n; p -= step) r.splice(1, 0, p);
+    return r;
+  };
+
+  const masks = [
+    (x, y) => (x + y) % 2 === 0,
+    (x, y) => y % 2 === 0,
+    (x, y) => x % 3 === 0,
+    (x, y) => (x + y) % 3 === 0,
+    (x, y) => (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0,
+    (x, y) => (x * y) % 2 + (x * y) % 3 === 0,
+    (x, y) => ((x * y) % 2 + (x * y) % 3) % 2 === 0,
+    (x, y) => ((x + y) % 2 + (x * y) % 3) % 2 === 0,
+  ];
+
+  function make(text) {
+    const bytes = Array.from(new TextEncoder().encode(text));
+
+    // 1) Elegir la versión más chica donde entren los datos
+    let ver = 1;
+    for (; ; ver++) {
+      if (ver > 40) throw new Error('Texto demasiado largo para un QR');
+      if (4 + (ver < 10 ? 8 : 16) + bytes.length * 8 <= dataWords(ver) * 8) break;
+    }
+
+    // 2) Armar los bits: modo byte + largo + datos + relleno
+    const bits = [];
+    const put = (val, n) => { for (let i = n - 1; i >= 0; i--) bits.push((val >>> i) & 1); };
+    put(4, 4);
+    put(bytes.length, ver < 10 ? 8 : 16);
+    bytes.forEach(b => put(b, 8));
+    const cap = dataWords(ver) * 8;
+    put(0, Math.min(4, cap - bits.length));
+    put(0, (8 - bits.length % 8) % 8);
+    for (let pad = 0xEC; bits.length < cap; pad ^= 0xEC ^ 0x11) put(pad, 8);
+    const data = [];
+    for (let i = 0; i < bits.length; i += 8) data.push(parseInt(bits.slice(i, i + 8).join(''), 2));
+
+    // 3) Dividir en bloques, calcular corrección y entrelazar
+    const nb = BLK[ver], ecl = ECC[ver], raw = Math.floor(rawModules(ver) / 8);
+    const nShort = nb - raw % nb, shortLen = Math.floor(raw / nb), gen = rsGen(ecl);
+    const blocks = [];
+    for (let i = 0, k = 0; i < nb; i++) {
+      const d = data.slice(k, k + shortLen - ecl + (i < nShort ? 0 : 1));
+      k += d.length;
+      const e = rsRem(d, gen);
+      if (i < nShort) d.push(0);
+      blocks.push(d.concat(e));
+    }
+    const out = [];
+    for (let i = 0; i < blocks[0].length; i++) {
+      blocks.forEach((b, j) => { if (i !== shortLen - ecl || j >= nShort) out.push(b[i]); });
+    }
+
+    // 4) Dibujar la matriz
+    const size = ver * 4 + 17;
+    const mod = Array.from({ length: size }, () => new Array(size).fill(false));
+    const fn = Array.from({ length: size }, () => new Array(size).fill(false));
+    const set = (x, y, d) => { mod[y][x] = d; fn[y][x] = true; };
+    const bit = (n, i) => ((n >>> i) & 1) !== 0;
+
+    for (let i = 0; i < size; i++) { set(6, i, i % 2 === 0); set(i, 6, i % 2 === 0); }
+
+    const finder = (cx, cy) => {
+      for (let dy = -4; dy <= 4; dy++) for (let dx = -4; dx <= 4; dx++) {
+        const d = Math.max(Math.abs(dx), Math.abs(dy)), x = cx + dx, y = cy + dy;
+        if (x >= 0 && x < size && y >= 0 && y < size) set(x, y, d !== 2 && d !== 4);
+      }
+    };
+    finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+
+    const ap = alignPos(ver);
+    ap.forEach((cy, i) => ap.forEach((cx, j) => {
+      if ((i === 0 && j === 0) || (i === 0 && j === ap.length - 1) || (i === ap.length - 1 && j === 0)) return;
+      for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
+        set(cx + dx, cy + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+      }
+    }));
+
+    const formatBits = m => {            // nivel M = 0
+      const d = m;
+      let r = d;
+      for (let i = 0; i < 10; i++) r = (r << 1) ^ ((r >>> 9) * 0x537);
+      const b = ((d << 10) | r) ^ 0x5412;
+      for (let i = 0; i <= 5; i++) set(8, i, bit(b, i));
+      set(8, 7, bit(b, 6)); set(8, 8, bit(b, 7)); set(7, 8, bit(b, 8));
+      for (let i = 9; i < 15; i++) set(14 - i, 8, bit(b, i));
+      for (let i = 0; i < 8; i++) set(size - 1 - i, 8, bit(b, i));
+      for (let i = 8; i < 15; i++) set(8, size - 15 + i, bit(b, i));
+      set(8, size - 8, true);
+    };
+    formatBits(0);
+
+    if (ver >= 7) {
+      let r = ver;
+      for (let i = 0; i < 12; i++) r = (r << 1) ^ ((r >>> 11) * 0x1F25);
+      const b = (ver << 12) | r;
+      for (let i = 0; i < 18; i++) {
+        const a = size - 11 + i % 3, c = Math.floor(i / 3);
+        set(a, c, bit(b, i)); set(c, a, bit(b, i));
+      }
+    }
+
+    // 5) Colocar los datos en zigzag
+    let k = 0;
+    for (let right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (let vert = 0; vert < size; vert++) {
+        for (let j = 0; j < 2; j++) {
+          const x = right - j, up = ((right + 1) & 2) === 0, y = up ? size - 1 - vert : vert;
+          if (!fn[y][x] && k < out.length * 8) {
+            mod[y][x] = bit(out[k >>> 3], 7 - (k & 7));
+            k++;
+          }
+        }
+      }
+    }
+
+    // 6) Probar las 8 máscaras y quedarse con la mejor
+    const applyMask = m => {
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+        if (!fn[y][x] && masks[m](x, y)) mod[y][x] = !mod[y][x];
+      }
+    };
+    const penalty = () => {
+      let p = 0, dark = 0;
+      const lines = [];
+      for (let y = 0; y < size; y++) lines.push(mod[y].map(v => (v ? 1 : 0)).join(''));
+      for (let x = 0; x < size; x++) lines.push(mod.map(row => (row[x] ? 1 : 0)).join(''));
+      lines.forEach(s => {
+        (s.match(/0{5,}|1{5,}/g) || []).forEach(r => { p += 3 + r.length - 5; });
+        p += 40 * ((s.match(/(?=10111010000)/g) || []).length + (s.match(/(?=00001011101)/g) || []).length);
+      });
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+        if (mod[y][x]) dark++;
+        if (x < size - 1 && y < size - 1 && mod[y][x] === mod[y][x + 1] && mod[y][x] === mod[y + 1][x] && mod[y][x] === mod[y + 1][x + 1]) p += 3;
+      }
+      return p + 10 * Math.floor(Math.abs(dark * 100 / (size * size) - 50) / 5);
+    };
+    let best = 0, bestP = Infinity;
+    for (let m = 0; m < 8; m++) {
+      applyMask(m); formatBits(m);
+      const p = penalty();
+      if (p < bestP) { bestP = p; best = m; }
+      applyMask(m);
+    }
+    applyMask(best); formatBits(best);
+
+    return { n: size, version: ver, mask: best, dark: (r, c) => mod[r][c] };
+  }
+
+  return { make };
+})();
+
+</script>
+  <script>
+/* =========================================================
+   parts.js — piezas compartidas
+   Lo usan el simulador (app.js), el video de armado (video.js)
+   y la ficha que se ve al escanear el QR (ficha.js).
+   Se carga después de data.js e icons.js.
+   ========================================================= */
+
+const MAXCPU = 160, MAXGPU = 144;    // topes para dibujar las barras y el medidor
+
+// Consumo estimado (W) de cada CPU y GPU, para calcular la fuente
+const WC={'Intel Pentium':58,'Intel Core i3':60,'Intel Core i5':65,'Intel Core i7':125,'Ryzen 5':65,'Ryzen 7':105},WG={'GTX 1650':75,'RTX 3050':130,'RTX 3060':170,'RTX 4060':115,'RTX 4070':200};
+
+// Fuente recomendada y refrigeración según CPU + GPU
+const psuOf=(c,g)=>Math.max(550,Math.ceil((WC[c.n]+WG[g.n]+100)*1.4/50)*50);
+const liqOf=(c,g)=>/i7|Ryzen 7/.test(c.n)&&g.fps>=120;
+
+// Ventilador dibujado (SVG)
+const fan=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#0d1018" stroke="#59607a"/><g class="fan">${[0,72,144,216,288].map(a=>`<path d="M${x} ${y}q${r*.55} ${-r*.1} ${r*.75} ${-r*.6}q${-r*.05} ${r*.55} ${-r*.75} ${r*.6}z" fill="#d5d9e4" transform="rotate(${a} ${x} ${y})"/>`).join('')}</g><circle cx="${x}" cy="${y}" r="${r*.22}" fill="#222" stroke="#4f7dff" class="rgb"/>`;
+
+// Devuelve [texto corto, porcentaje de la barra] de cada pieza
+function pcInfo(k, a) {
+  if (k === 'c') return [tr(`Tope ${a.cap} FPS`, `Cap ${a.cap} FPS`), a.cap / MAXCPU * 100];
+  if (k === 'g') return [tr(`Da ${a.fps} FPS`, `Gives ${a.fps} FPS`), a.fps / MAXGPU * 100];
+  const tag = /DDR5/.test(a.n) ? 'DDR5'
+    : a.dual ? 'Dual channel'
+    : a.f < 1 ? tr('Limita los FPS', 'Limits FPS')
+    : tr('Mucha memoria', 'Lots of memory');
+  return [tag, a.f * 100];
+}
+
+/* ---------- La PC dibujada: gabinete con las piezas elegidas ---------- */
+const TOWER_BASE = `
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16346f"/><stop offset="1" stop-color="#081634"/></linearGradient>
+  </defs>
+  <rect x="24" y="6" width="192" height="270" rx="16" fill="#071230" stroke="#2a559e" stroke-width="3"/>
+  <rect x="24" y="6" width="192" height="270" rx="16" fill="none" stroke="#5a8bff" stroke-width="3" class="sm-glow"/>
+  <rect x="34" y="16" width="172" height="250" rx="9" fill="url(#tg)" stroke="#1d3f7a"/>
+  <polygon points="40,18 120,18 70,264 40,264" fill="#fff" opacity=".04"/>
+  <rect x="44" y="26" width="116" height="156" rx="4" fill="#0b2250" stroke="#2a559e"/>
+  <path d="M52 100H78M60 170V120H112M52 130H100" stroke="#2f7a63" fill="none" opacity=".5"/>
+  <g fill="none" stroke="#3a63c9" stroke-dasharray="4 3">
+    <rect x="56" y="38" width="46" height="46" rx="4"/>
+    <rect x="114" y="34" width="10" height="88" rx="2"/>
+    <rect x="130" y="34" width="10" height="88" rx="2"/>
+    <rect x="50" y="140" width="108" height="30" rx="5"/>
+    <rect x="44" y="198" width="116" height="54" rx="5"/>
+  </g>`;
+
+// Dibuja las piezas elegidas dentro del gabinete (las que faltan quedan con guía punteada)
+// popKey = pieza que acaba de elegirse (se anima al aparecer); en la ficha del QR va vacío
+function towerHTML(c, g, r, popKey) {
+  const pop = k => (popKey === k ? ' class="sm-pop"' : '');
+  const lbl = (x, y, tx) => `<text x="${x}" y="${y}" class="t-lbl">${tx}</text>`;
+  const gd = (x, y, tx) => `<text x="${x}" y="${y}" class="t-guide">${tx}</text>`;
+  const liq = !!(c && g && liqOf(c, g));
+  let h = '';
+
+  // ventiladores del costado (con radiador si es refrigeración líquida)
+  if (liq) h += `<rect x="170" y="32" width="34" height="116" rx="4" fill="#1b1f2c" stroke="#59607a"/>`;
+  h += fan(187, 62, 14) + fan(187, 118, 14);
+
+  // CPU + su refrigeración
+  if (c) {
+    h += `<g${pop('c')}>
+      <rect x="56" y="38" width="46" height="46" rx="4" fill="#15171f" stroke="#8a90a3"/>
+      <rect x="62" y="44" width="34" height="34" rx="3" fill="${c.c}" opacity=".7"/>`;
+    h += liq
+      ? `<path d="M95 54H172M95 70H160V104H172" stroke="#161a24" stroke-width="5" fill="none" stroke-linecap="round"/>
+         <circle cx="79" cy="61" r="15" fill="#10131b" stroke="#59607a" stroke-width="2"/>
+         <circle cx="79" cy="61" r="10" fill="none" stroke="#4f7dff" stroke-width="3" class="rgb"/>
+         <text x="79" y="64" class="t-aio">AIO</text>`
+      : fan(79, 61, 16);
+    h += lbl(79, 97, c.n.replace('Intel ', '')) + '</g>';
+  } else h += gd(79, 65, 'CPU');
+
+  // RAM (dual channel llena los dos módulos)
+  if (r) {
+    [0, 1].forEach(i => {
+      if (i === 0 || r.dual) {
+        h += `<g${pop('r')}>
+          <rect x="${114 + i * 16}" y="34" width="10" height="88" rx="1.5" fill="#1a1d28" stroke="#59607a"/>
+          <rect x="${115 + i * 16}" y="36" width="8" height="12" fill="#4f7dff" class="rgb"/>
+          <rect x="${116 + i * 16}" y="52" width="6" height="64" fill="#0a0c12"/></g>`;
+      }
+    });
+    h += lbl(127, 134, r.n.replace(/ \(.*\)/, ''));
+  } else h += gd(127, 134, 'RAM');
+
+  // GPU
+  if (g) {
+    h += `<g${pop('g')}>
+      <rect x="50" y="140" width="108" height="30" rx="5" fill="#161923" stroke="#59607a"/>
+      <rect x="50" y="140" width="108" height="5" rx="2" fill="${g.c}"/>
+      ${fan(82, 158, 10)}${fan(126, 158, 10)}${lbl(104, 180, g.n)}</g>`;
+  } else h += gd(104, 159, 'GPU');
+
+  // Fuente (depende de CPU + GPU)
+  if (c && g) {
+    h += `<g>
+      <rect x="44" y="198" width="116" height="54" rx="5" fill="#20232e" stroke="#59607a"/>
+      <text x="54" y="222" class="t-psu">PSU ${psuOf(c, g)}W</text>
+      <text x="54" y="236" class="t-sub">80 PLUS BRONZE</text>${fan(132, 225, 18)}</g>`;
+  } else h += gd(102, 228, 'PSU');
+
+  return h;
+}
+
+</script>
+  <script>
+/* =========================================================
+   voz.js — leer en voz alta en inglés y en español
+   La voz la pone el navegador del dispositivo (no usa internet).
+   Lo usan el glosario (app.js) y la ficha del QR (ficha.js).
+   ========================================================= */
+
+const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+let voices = [];
+if (canSpeak) {
+  const load = () => { voices = speechSynthesis.getVoices(); };
+  load();
+  speechSynthesis.onvoiceschanged = load;   // algunos navegadores cargan las voces más tarde
+}
+
+// Busca una voz según el idioma (prefs = prefijos en orden de preferencia)
+function pickVoice(prefs) {
+  for (const p of prefs) {
+    const v = voices.find(v => v.lang.replace('_', '-').toLowerCase().startsWith(p));
+    if (v) return v;
+  }
+  return null;
+}
+
+// Lee un texto; devuelve false si el dispositivo no tiene voz de ese idioma
+function speakOne(text, lang) {
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice(lang === 'en' ? ['en-us', 'en'] : ['es-ar', 'es-us', 'es-mx', 'es']);
+  u.lang = v ? v.lang : (lang === 'en' ? 'en-US' : 'es-AR');
+  if (v) u.voice = v;
+  u.rate = 0.92;
+  speechSynthesis.speak(u);
+  return !!v || !voices.length;
+}
+
+</script>
+  <script>
+/* =========================================================
+   video.js — animación "Cómo armar tu PC" paso a paso
+   Usa los componentes elegidos en el simulador (sel)
+   (psuOf, liqOf y fan están en parts.js)
+   ========================================================= */
+
+function vparts(){
+const c=CPU[sel.c??2],g=GPU[sel.g??3],r=RAM[sel.r??1];
+return {c,g,r,fps:Math.round(Math.min(g.fps,c.cap)*r.f),liq:liqOf(c,g),w:psuOf(c,g)};
+}
+const VBASE=`<defs><linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1c2a"/><stop offset="1" stop-color="#0b0b12"/></linearGradient><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d2230"/><stop offset="1" stop-color="#0f121a"/></linearGradient><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c3cad8"/><stop offset=".5" stop-color="#6b7388"/><stop offset="1" stop-color="#b4bccb"/></linearGradient><linearGradient id="gf" x1="0" x2=".08" y1="0" y2="0" spreadMethod="repeat"><stop offset="0" stop-color="#9aa2b3"/><stop offset="1" stop-color="#4c5366"/></linearGradient><pattern id="pn" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#c9a54a"/></pattern><filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-opacity=".7"/></filter></defs><rect width="480" height="300" fill="#07060c"/><rect x="6" y="6" width="362" height="288" rx="14" fill="url(#gc)" stroke="#3c3c52" stroke-width="2"/>`;
+const VTOP=`<polygon points="22,8 170,8 90,292 22,292" fill="#fff" opacity=".04"/><rect x="6" y="6" width="362" height="288" rx="14" fill="none" stroke="#4f7dff" stroke-width="3" class="rgb glow"/>`;
+function vels(P){const {c,g,r,fps,liq,w}=P;return[
+`<g filter="url(#sh)"><rect x="96" y="22" width="246" height="224" rx="6" fill="url(#gp)" stroke="#2c3347"/></g><path d="M110 60H150V120H260M130 230V150H250M300 40V190M320 60V220M110 140H160" stroke="#2f7a63" fill="none" opacity=".55"/><rect x="104" y="26" width="120" height="12" rx="3" fill="url(#gm)"/><rect x="286" y="196" width="46" height="36" rx="3" fill="url(#gm)"/><rect x="104" y="140" width="70" height="8" rx="2" fill="#0a0c12" stroke="#59607a"/><rect x="104" y="210" width="228" height="6" rx="2" fill="#0a0c12" stroke="#59607a"/><rect x="160" y="54" width="56" height="56" fill="#15171f" stroke="#8a90a3"/><rect x="164" y="58" width="48" height="48" fill="url(#pn)"/><path d="M218 62v40" stroke="#cfd3dc" stroke-width="3"/><rect x="262" y="40" width="10" height="112" fill="#0a0c12" stroke="#59607a"/><rect x="278" y="40" width="10" height="112" fill="#0a0c12" stroke="#59607a"/>`,
+`<g filter="url(#sh)"><rect x="166" y="60" width="44" height="44" rx="3" fill="url(#gm)" stroke="#e6eaf2"/></g><rect x="172" y="66" width="32" height="32" rx="2" fill="${c.c}" opacity=".35"/><text x="188" y="84" fill="#10131b" font-size="7" font-weight="700" text-anchor="middle">${c.n.replace('Intel ','')}</text><text x="188" y="94" fill="#10131b" font-size="5" text-anchor="middle">CPU</text><path d="M166 60h8l-8 8z" fill="#c9a54a"/>`,
+`<ellipse cx="188" cy="82" rx="7" ry="6" fill="#e9e6df" opacity=".9"/>`+(liq?`<g class="drop d2"><path d="M68 74H140V78H168M68 214H118V104H168" stroke="#161a24" stroke-width="7" fill="none" stroke-linecap="round"/><g filter="url(#sh)"><rect x="14" y="40" width="54" height="196" rx="6" fill="#1b1f2c" stroke="#59607a"/></g><g stroke="#59607a">${Array.from({length:18},(_,i)=>`<path d="M18 ${48+i*10}H64"/>`).join('')}</g>${fan(41,88,20)}${fan(41,188,20)}<g filter="url(#sh)"><circle cx="188" cy="82" r="24" fill="#10131b" stroke="#59607a" stroke-width="2"/></g><circle cx="188" cy="82" r="17" fill="none" stroke="#4f7dff" stroke-width="3" class="rgb"/><text x="188" y="85" fill="#cfd3dc" font-size="8" text-anchor="middle">AIO</text></g>`:`<g class="drop d2"><g filter="url(#sh)"><rect x="150" y="48" width="76" height="68" rx="4" fill="url(#gf)" stroke="#59607a"/></g><path d="M158 48V30M176 48V30M196 48V30M214 48V30" stroke="#c9733a" stroke-width="4"/>${fan(188,82,28)}</g>`),
+[0,1].map(i=>`<g class="drop ${i?'d1':''}"><g filter="url(#sh)"><rect x="${262+i*16}" y="40" width="10" height="112" rx="1.5" fill="#1a1d28" stroke="#59607a"/></g><rect x="${263+i*16}" y="42" width="8" height="12" fill="#4f7dff" class="rgb"/><rect x="${264+i*16}" y="58" width="6" height="88" fill="#0a0c12"/></g>`).join(''),
+`<g filter="url(#sh)"><rect x="100" y="164" width="238" height="42" rx="5" fill="#161923" stroke="#59607a"/></g><rect x="100" y="164" width="238" height="5" rx="2" fill="${g.c}"/>${fan(150,187,15)}${fan(214,187,15)}<text x="246" y="190" fill="#9aa2b3" font-size="9" font-weight="700">${g.n}</text>`,
+`<g filter="url(#sh)"><rect x="14" y="252" width="150" height="34" rx="4" fill="#20232e" stroke="#59607a"/></g><text x="24" y="268" fill="#cfd3dc" font-size="10" font-weight="700">PSU ${w}W</text><text x="24" y="280" fill="#9aa2b3" font-size="7">80 PLUS BRONZE</text><g fill="none" stroke-linecap="round"><path d="M164 266H356V120H342M84 252V30H104M120 252V206" stroke="#10131b" stroke-width="5"/><path d="M164 264H354V122H342M86 252V32H104M122 252V206" stroke="#4a5068"/></g>`,
+`<g filter="url(#sh)"><rect x="378" y="70" width="96" height="70" rx="5" fill="#05050a" stroke="#59607a" stroke-width="3"/></g><rect x="382" y="74" width="88" height="62" fill="#0e2230"/><text x="426" y="108" fill="#4f7dff" font-size="22" font-weight="700" text-anchor="middle">${fps}</text><text x="426" y="124" fill="#4f7dff" font-size="12" text-anchor="middle">FPS</text><rect x="420" y="140" width="12" height="16" fill="#2a2d3a"/><rect x="404" y="156" width="44" height="6" rx="2" fill="#2a2d3a"/>`];}
+// ---- Video 2: explicado paso a paso ----
+const V2D=8,V2L=['MOTHERBOARD','CPU','PASTE + COOLER','RAM','GPU','PSU',''],V2P=[[219,134],[188,126],[188,128],[281,160],[219,150],[60,242],[426,172]];
+let v2t=0,v2p=false,v2i=null,v2s=-1;
+function v2txt(P){const {c,g,r,fps,liq,w}=P;return[
+[tr('Placa madre (Motherboard)','Motherboard'),tr('Es la placa donde se conecta todo. Fijala al gabinete con tornillos y separadores.','The board where everything plugs in. Fix it to the case with screws and standoffs.'),tr('Elegí el chipset según el uso: H610 básico, B760 medio, Z790 para overclock.','Pick the chipset by use: H610 basic, B760 mid-range, Z790 for overclocking.')],
+[tr(`Procesador (CPU): ${c.n}`,`CPU: ${c.n}`),tr('Es el cerebro: calcula la lógica y la física del juego. Alineá el triángulo dorado con el del socket y bajá la palanca.','The brain: it calculates the game logic and physics. Match the gold triangle with the socket and lower the lever.'),tr('Socket: LGA1700 no entra en LGA1200 y AM4 no entra en AM5. Check compatibility before buying.','Socket: LGA1700 does not fit LGA1200 and AM4 does not fit AM5. Check compatibility before buying.')],
+[liq?tr('Pasta térmica + refrigeración líquida','Thermal paste + liquid cooling'):tr('Pasta térmica + cooler por aire','Thermal paste + air cooler'),tr('La pasta térmica pasa el calor del CPU al cooler. Poné una gota del tamaño de una arveja y apoyá el cooler.','Thermal paste transfers heat from the CPU to the cooler. Add a pea-sized drop and set the cooler on top.'),liq?tr('Con i7/Ryzen 7 y 144 FPS el aire no alcanza: necesitás líquida de 240mm. Overheating causes FPS drop.','With i7/Ryzen 7 and 144 FPS, air is not enough: you need 240mm liquid cooling. Overheating causes FPS drop.'):tr('El aire es barato y simple. Cambiá la pasta 1 vez por año. Overheating causes FPS drop.','Air cooling is cheap and simple. Change the paste once a year. Overheating causes FPS drop.')],
+[tr(`Memoria RAM: ${r.n}`,`RAM: ${r.n}`),tr('Es la memoria rápida para los datos del juego. Insertala en los slots correctos hasta oír el clic.','Fast memory for game data. Push it into the right slots until you hear a click.'),tr('2x8GB en dual channel da hasta 20% más FPS que 1x16GB. DDR5 no entra en una mother DDR4.','2x8GB in dual channel gives up to 20% more FPS than 1x16GB. DDR5 does not fit a DDR4 board.')],
+[tr(`Placa de video (GPU): ${g.n}`,`Graphics card (GPU): ${g.n}`),tr('Genera los gráficos: es la que más define los FPS. Va en la ranura PCIe x16, se atornilla y se conecta a la fuente.','It generates the graphics: it defines your FPS the most. It goes in the PCIe x16 slot, gets screwed in and plugged into the PSU.'),tr(`Esta placa da ${g.fps} FPS. Si el CPU es lento, hay bottleneck.`,`This card gives ${g.fps} FPS. If the CPU is slow, there is a bottleneck.`)],
+[tr(`Fuente (PSU): ${w}W`,`Power supply (PSU): ${w}W`),tr('Da energía a todo. Se calcula sumando los watts de CPU + GPU + el resto. Después ordená los cables.','It powers everything. Add CPU + GPU + the rest in watts. Then do cable management.'),tr('Una fuente genérica se quema: usá mínimo 550W 80 Plus Bronze.','A generic PSU can burn out: use at least 550W 80 Plus Bronze.')],
+[tr('¡A encender!','Power on!'),tr('Conectá el monitor, prendé la PC e instalá los drivers. Si hace falta, actualizá la BIOS.','Plug in the monitor, power on and install the drivers. Update the BIOS if needed.'),tr(`Con monitor de 60Hz no ves más de 60 FPS aunque la PC dé ${fps}. You get ${fps} FPS!`,`With a 60Hz monitor you never see more than 60 FPS, even if your PC gives ${fps}. You get ${fps} FPS!`)]];}
+function v2draw0(f){
+const P=vparts(),s=Math.min(6,Math.floor(v2t/V2D));
+if(f!==false||s!==v2s){
+v2s=s;const x=v2txt(P),sv=$('v2svg'),lab=s===6?P.fps+' FPS':V2L[s],w=lab.length*6.4+16,[cx,cy]=V2P[s];
+sv.classList.toggle('on',s===6);
+sv.innerHTML=VBASE+vels(P).slice(0,s+1).map((e,i)=>`<g class="${i===s&&v2t>0?'drop':''}">${e}</g>`).join('')+VTOP+`<g class="drop d2"><rect x="${cx-w/2}" y="${cy-9}" width="${w}" height="18" rx="9" fill="#ffd23f"/><text x="${cx}" y="${cy+4}" font-size="10" font-weight="700" text-anchor="middle" fill="#14101f">${lab}</text></g>`;
+$('v2t').textContent=`${s+1}/7 · ${x[s][0]}`;$('v2b').textContent=x[s][1];$('v2k').textContent='💡 '+x[s][2];
+const nm=['Motherboard',P.c.n,P.liq?'Liquid cooling 240mm':'Air cooling',P.r.n,P.g.n,`PSU ${P.w}W`,'Monitor + drivers'];
+$('v2l').innerHTML=nm.map((n,i)=>`<span style="padding:2px 8px;border-radius:12px;border:1px solid var(--line);${i<=s?'background:var(--b);color:#14101f;font-weight:700':'opacity:.55'}">${i<=s?'✔':'○'} ${n}</span>`).join('');
+$('v2n').innerHTML=[...Array(7)].map((_,i)=>`<button class="btn ${i===s?'sel':'alt'}" data-i="${i}" style="margin:2px;padding:6px 10px">${i+1}</button>`).join('');
+}
+$('v2b2').style.width=Math.min(100,v2t/(7*V2D)*100)+'%';
+$('v2play').textContent=v2p?tr('⏸ Pausa','⏸ Pause'):v2t>=7*V2D?tr('↻ Repetir','↻ Replay'):tr('▶ Reproducir','▶ Play');
+}
+function v2go(i){v2t=Math.max(0,Math.min(6,i))*V2D;v2draw(false)}
+$('v2n').onclick=e=>{const b=e.target.closest('button');if(b)v2go(+b.dataset.i)};
+$('v2prev').onclick=()=>v2go(v2s-1);$('v2next').onclick=()=>v2go(v2s+1);
+$('v2play').onclick=()=>{
+if(v2p){v2p=false;clearInterval(v2i)}
+else{if(v2t>=7*V2D-.1)v2t=0;v2p=true;v2i=setInterval(()=>{v2t=Math.min(7*V2D,v2t+.1);if(v2t>=7*V2D){v2p=false;clearInterval(v2i)}v2draw(false)},100)}
+v2draw(v2t>0?false:true);
+};
+
+/* ---------- Instrucciones de instalación según los componentes elegidos ---------- */
+function v2extra() {
+  const { c, g, r, w, liq } = vparts();
+  const elegido = sel.c !== null && sel.g !== null && sel.r !== null;
+  const amd = /Ryzen/.test(c.n);
+
+  $('v2me').textContent = elegido
+    ? tr('Tu PC: ', 'Your PC: ') + `${c.n} + ${g.n} + ${r.n}`
+    : tr('Elegí tus componentes en el simulador de arriba. Mientras tanto mostramos un ejemplo.',
+         'Pick your parts in the simulator above. Meanwhile, here is an example.');
+
+  const pasos = [
+    // 0 · Motherboard
+    amd ? tr(`Para tu ${c.n} necesitás una mother AMD (socket AM4 o AM5). Atornillala al gabinete.`,
+             `For your ${c.n} you need an AMD board (AM4 or AM5 socket). Screw it into the case.`)
+        : tr(`Para tu ${c.n} necesitás una mother Intel (socket LGA1700). Atornillala al gabinete.`,
+             `For your ${c.n} you need an Intel board (LGA1700 socket). Screw it into the case.`),
+    // 1 · CPU
+    tr(`Instalá tu ${c.n}: alineá el triángulo dorado con el del socket, apoyalo sin forzar y bajá la palanca.`,
+       `Install your ${c.n}: match the gold triangle with the socket, set it down without force and lower the lever.`),
+    // 2 · Refrigeración
+    liq ? tr(`Montá el radiador de 240mm en el gabinete y apoyá el bloque sobre tu ${c.n}, con pasta térmica.`,
+             `Mount the 240mm radiator in the case and set the block on your ${c.n}, with thermal paste.`)
+        : tr(`Poné una gota de pasta térmica sobre tu ${c.n}, apoyá el cooler de aire y ajustalo.`,
+             `Put a drop of thermal paste on your ${c.n}, set the air cooler on top and tighten it.`),
+    // 3 · RAM
+    (r.dual ? tr('Colocá los 2 módulos de 8GB en las ranuras del mismo color (dual channel) hasta oír el clic.',
+                 'Put the 2 sticks of 8GB in the slots of the same color (dual channel) until you hear a click.')
+            : tr(`Colocá tu ${r.n} en la ranura correcta hasta oír el clic.`,
+                 `Put your ${r.n} in the right slot until you hear a click.`))
+      + (/DDR5/.test(r.n) ? tr(' Tu mother tiene que ser DDR5.', ' Your board must be DDR5.') : ''),
+    // 4 · GPU
+    tr(`Insertá tu ${g.n} en la ranura PCIe x16, atornillala al gabinete y conectale el cable de la fuente.`,
+       `Insert your ${g.n} in the PCIe x16 slot, screw it to the case and plug in the PSU cable.`),
+    // 5 · Fuente
+    tr(`Tu fuente de ${w}W alimenta la mother, el ${c.n} y la ${g.n}. Ordená los cables.`,
+       `Your ${w}W PSU powers the board, the ${c.n} and the ${g.n}. Do the cable management.`),
+    // 6 · Encendido
+    tr(`Conectá el monitor, prendé la PC e instalá los drivers de tu ${g.n}.`,
+       `Plug in the monitor, power on and install the drivers for your ${g.n}.`)
+  ];
+  $('v2i').textContent = '🔧 ' + pasos[Math.max(0, v2s)];
+}
+
+// Dibuja el video y después agrega la instrucción de instalación
+function v2draw(f) {
+  v2draw0(f);
+  v2extra();
+}
+
+</script>
+  <script>
+/* =========================================================
+   game.js — juego "Bottleneck Hunter" (8 rondas)
+   ========================================================= */
+
+const ROUNDS = 8;
+let gm = { r: 0, score: 0, streak: 0, step: 'fps', msg: '', done: false, cfg: null };
+
+const rnd = arr => arr[Math.floor(Math.random() * arr.length)];
+const shuffle = arr => arr.map(v => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+
+// Empieza una partida nueva
+function gmStart() {
+  gm = { r: 0, score: 0, streak: 0, step: 'fps', msg: '', done: false, cfg: null };
+  gmNext();
+}
+
+// Pasa a la ronda siguiente (o termina)
+function gmNext() {
+  if (gm.r >= ROUNDS) { gm.done = true; gmDraw(); return; }
+  gm.r++;
+  const c = rnd(CPU), g = rnd(GPU), r = rnd(RAM);
+  const fps = fpsOf(c, g, r);
+  gm.cfg = {
+    c, g, r, fps,
+    bn: c.cap < g.fps,                                       // ¿hay cuello de botella?
+    opts: shuffle([fps, Math.round(fps * .6), Math.round(fps * .8), Math.round(fps * 1.25)])
+  };
+  gm.step = 'fps';
+  gm.msg = '';
+  gmDraw();
+}
+
+// Suma puntos y racha
+function award(ok) {
+  if (ok) { gm.streak++; gm.score += 10 + (gm.streak - 1) * 5; }
+  else gm.streak = 0;
+}
+
+// Procesa una respuesta
+function gmAnswer(a) {
+  const k = gm.cfg;
+  if (gm.step === 'fps') {
+    const ok = +a === k.fps;
+    award(ok);
+    gm.msg = ok ? tr('✔ ¡FPS correctos!', '✔ Right FPS!') : tr(`✖ Eran ${k.fps} FPS.`, `✖ It was ${k.fps} FPS.`);
+    gm.step = 'bn';
+  } else if (gm.step === 'bn') {
+    const ok = (a === 'y') === k.bn;
+    award(ok);
+    gm.msg += ' ' + (ok ? '✔ ' : '✖ ') + (k.bn
+      ? tr(`Sí hay cuello de botella: el ${k.c.n} (máx. ${k.c.cap} FPS) frena a la ${k.g.n} (${k.g.fps} FPS).`,
+           `Yes, bottleneck: the ${k.c.n} (max ${k.c.cap} FPS) holds back the ${k.g.n} (${k.g.fps} FPS).`)
+      : tr('No hay cuello de botella: el CPU puede con la placa de video.',
+           'No bottleneck: the CPU can keep up with the graphics card.'));
+    gm.step = 'next';
+  } else {
+    gmNext();
+    return;
+  }
+  gmDraw();
+}
+
+// Dibuja el juego
+function gmDraw() {
+  $('sl').textContent = tr('Puntos:', 'Score:');
+  $('stl').textContent = tr('Racha:', 'Streak:');
+  $('sc').textContent = gm.score;
+  $('st').textContent = gm.streak;
+
+  if (gm.done) {
+    $('qr').textContent = tr('¡Fin del juego!', 'Game over!');
+    $('qc').textContent = '';
+    $('qq').textContent = tr(`Sacaste ${gm.score} puntos.`, `You scored ${gm.score} points.`);
+    $('qa').innerHTML = `<button class="btn" data-a="again">${tr('↻ Jugar de nuevo', '↻ Play again')}</button>`;
+    $('qm').textContent = '';
+    return;
+  }
+
+  const k = gm.cfg;
+  $('qr').textContent = tr(`Ronda ${gm.r}/${ROUNDS}`, `Round ${gm.r}/${ROUNDS}`);
+  $('qc').textContent = `🖥️ ${k.c.n} + ${k.g.n} + ${k.r.n}`;
+
+  if (gm.step === 'fps') {
+    $('qq').textContent = tr('¿Cuántos FPS da esta PC?', 'How many FPS does this PC get?');
+    $('qa').innerHTML = k.opts.map(o => `<button class="btn alt" data-a="${o}">${o} FPS</button>`).join('');
+  } else if (gm.step === 'bn') {
+    $('qq').textContent = tr('¿Tiene cuello de botella?', 'Does it have a bottleneck?');
+    $('qa').innerHTML = `<button class="btn alt" data-a="y">${tr('Sí', 'Yes')}</button><button class="btn alt" data-a="n">No</button>`;
+  } else {
+    $('qq').textContent = '';
+    $('qa').innerHTML = `<button class="btn" data-a="next">${gm.r >= ROUNDS ? tr('Ver resultado', 'See result') : tr('Siguiente →', 'Next →')}</button>`;
+  }
+  $('qm').textContent = gm.msg;
+}
+
+// Clics sobre las respuestas
+$('qa').onclick = e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  if (b.dataset.a === 'again') gmStart();
+  else gmAnswer(b.dataset.a);
+};
+
+</script>
+  <script>
+/* =========================================================
+   app.js — simulador, ficha (imprimir / QR), glosario e idioma
+   (textos y datos: data.js · dibujos: icons.js · QR: qr.js ·
+    piezas y PC dibujada: parts.js · voz: voz.js · video: video.js · juego: game.js)
+   ========================================================= */
+
+let lastPick = null;                 // última pieza tocada (para animarla al aparecer)
+
+/* ---------- 1. Piezas: tarjetas de CPU / GPU / RAM ---------- */
+function pcCard(k, i, a) {
+  const [txt, pct] = pcInfo(k, a);
+  return `
+    <button class="pc" data-k="${k}" data-i="${i}" aria-pressed="false" style="--c:${a.c || '#5a8bff'}">
+      <span class="pc-n">${a.n}</span>
+      <span class="pc-s">${txt}</span>
+      <span class="pc-bar"><i style="width:${pct}%"></i></span>
+      <span class="pc-p">${money(a.p)}</span>
+    </button>`;
+}
+
+function pcGroup(k, arr, label, n) {
+  return `
+    <div class="pg">
+      <h3><span class="pg-n">${n}</span>${label}</h3>
+      <div class="pcs">${arr.map((a, i) => pcCard(k, i, a)).join('')}</div>
+    </div>`;
+}
+
+function buildPick() {
+  const s = t();
+  $('opts').innerHTML = pcGroup('c', CPU, s.gc, 1) + pcGroup('g', GPU, s.gg, 2) + pcGroup('r', RAM, s.gr, 3);
+}
+
+/* ---------- 1. PC en vivo: gabinete dibujado + medidor de FPS ---------- */
+function buildRig() {
+  const s = t();
+  $('rig').innerHTML = `
+    <h3>${s.rigT}</h3>
+    <div class="rig-in">
+      <svg id="tower" viewBox="0 0 240 282" role="img" aria-label="${s.rigT}">${TOWER_BASE}<g id="tp"></g></svg>
+      <div class="gauge">
+        <svg viewBox="0 0 220 130" aria-hidden="true">
+          <defs><linearGradient id="gg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#5a8bff"/><stop offset="1" stop-color="#ffd23f"/></linearGradient></defs>
+          <path d="M20 112A90 90 0 0 1 200 112" pathLength="100" class="g-track"/>
+          <path id="gv" d="M20 112A90 90 0 0 1 200 112" pathLength="100" class="g-val"/>
+          <text id="gn" x="110" y="92" class="g-num fps">—</text>
+          <text x="110" y="112" class="g-unit">FPS</text>
+          <text x="14" y="127" class="g-tick">0</text>
+          <text x="206" y="127" class="g-tick" text-anchor="end">${MAXGPU}</text>
+        </svg>
+        <div class="lvl" id="fr">—</div>
+        <div class="msg" id="fm"></div>
+      </div>
+    </div>`;
+}
+
+/* ---------- 1. Ficha técnica: pantalla, impresión y QR ---------- */
+// Datos de lo que se eligió hasta ahora
+function fichaData() {
+  const c = CPU[sel.c], g = GPU[sel.g], r = RAM[sel.r];
+  const parts = [c, g, r];
+  const full = parts.every(Boolean);
+  const d = { c, g, r, parts, full, total: parts.reduce((n, p) => n + (p ? p.p : 0), 0) };
+  if (full) Object.assign(d, { fps: fpsOf(c, g, r), liq: liqOf(c, g), bn: c.cap < g.fps, w: psuOf(c, g) });
+  return d;
+}
+
+// Borde de papel cortado (zigzag) para la parte de abajo de la ficha
+const ZIG = (() => {
+  let d = 'M0 0H480';
+  for (let x = 480; x > 0; x -= 12) d += `L${x - 6} 8L${x - 12} 0`;
+  return `<svg class="zig" viewBox="0 0 480 8" preserveAspectRatio="none" aria-hidden="true"><path d="${d}Z"/></svg>`;
+})();
+
+const ascii = x => x.normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+// Texto que lleva el QR: la ficha completa, sin tildes para que cualquier lector la muestre bien
+function qrText(d) {
+  return ascii([
+    'BUILD YOUR DREAM PC - Expo Tecnica 2026',
+    `CPU: ${d.c.n}`,
+    `GPU: ${d.g.n}`,
+    `RAM: ${d.r.n}`,
+    `FPS: ${d.fps} (${perfOf(d.fps)})`,
+    `${tr('Fuente', 'PSU')}: ${d.w}W`,
+    `${tr('Refrigeracion', 'Cooling')}: ${d.liq ? tr('Liquida 240mm', 'Liquid 240mm') : tr('Por aire', 'Air')}`,
+    `Total: USD ${d.total}`,
+    ...(CUR === 'ARS' ? [`Total ARS: ${Math.round(d.total * RATE)} (1 USD = ${RATE} ARS)`] : []),
+  ].join('\n'));
+}
+
+/* ---------- Link que lleva el QR: abre ficha.html con la PC armada ---------- */
+// Dirección pública de la carpeta donde está la página (termina en "/"), o '' si no hay
+function cleanBase(u) {
+  u = (u || '').trim();
+  if (!u) return '';
+  if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+  try {
+    const url = new URL(u);
+    if (!url.hostname.includes('.')) return '';
+    let p = url.pathname;
+    if (/\.[a-z0-9]+$/i.test(p.split('/').pop())) p = p.replace(/[^/]*$/, '');   // saca index.html
+    return url.origin + (p.endsWith('/') ? p : p + '/');
+  } catch (e) { return ''; }
+}
+
+// Dirección de la página actual, si es una dirección que el celular puede abrir
+function autoBase() {
+  const h = location.hostname;
+  if (!/^https?:$/.test(location.protocol) || !h) return '';
+  if (/^(localhost|127\.|0\.0\.0\.0|\[?::1\]?$)/i.test(h)) return '';
+  return new URL('.', location.href).href;
+}
+
+function savedBase() {
+  try { return cleanBase(localStorage.getItem('siteUrl')); } catch (e) { return ''; }
+}
+
+const siteBase = () => cleanBase(SITE_URL) || savedBase() || autoBase();
+
+function fichaLink(base) {
+  const d = new Date(), z = n => String(n).padStart(2, '0');
+  const q = new URLSearchParams({
+    b: `${sel.c}-${sel.g}-${sel.r}`,          // CPU-GPU-RAM
+  });
+  if (CUR === 'ARS') { q.set('m', 'ARS'); q.set('t', RATE); }   // solo si se ve en pesos
+  if (L === 'en') q.set('l', 'en');                             // es es el idioma por defecto
+  q.set('d', `${d.getFullYear()}${z(d.getMonth() + 1)}${z(d.getDate())}`);
+  return base + 'ficha.html?' + q;
+}
+
+// Lo que lleva el QR: el link a la ficha; si no hay dirección pública, los datos como texto
+function qrPayload(d) {
+  const base = siteBase();
+  return base ? fichaLink(base) : qrText(d);
+}
+
+// Dibuja el QR como SVG (nítido al imprimir)
+function qrSVG(text) {
+  try {
+    if (!text) return '';
+    const q = QR.make(text), m = 4, n = q.n;
+    let p = '';
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+      if (q.dark(r, c)) p += `M${c + m} ${r + m}h1v1h-1z`;
+    }
+    return `<svg class="qr" viewBox="0 0 ${n + 2 * m} ${n + 2 * m}" shape-rendering="crispEdges" role="img" aria-label="QR">
+      <rect width="100%" height="100%" fill="#fff"/><path d="${p}" fill="#000"/></svg>`;
+  } catch (e) { return ''; }
+}
+
+function fichaHTML() {
+  const s = t(), d = fichaData();
+  const row = (l, n, p) => `<div class="pp-r"><span class="pp-l">${l}</span><span class="pp-n">${n}</span>${p ? `<b>${p}</b>` : ''}</div>`;
+
+  const rows = d.parts.map((p, i) => row(s.fl[i], p ? p.n : '—', p ? money(p.p) : '—')).join('');
+  let fps = '—', extra = '', foot = `<p class="pp-hint">${s.needAll}</p>`;
+
+  if (d.full) {
+    fps = `${d.fps} FPS · ${perfOf(d.fps)}`;
+    extra = `<div class="pp-rows">
+      ${row(s.fPsu, `${d.w}W · 80 Plus Bronze`)}
+      ${row(s.fCool, d.liq ? s.coolLiq : s.coolAir)}
+      ${row(s.fBn, d.bn ? s.yes : s.no)}
+      ${CUR === 'ARS' ? row(s.sheetRate, `US$ 1 = AR$ ${RATE.toLocaleString('es-AR')}`) : ''}</div>`;
+    foot = `<div class="pp-qr">${qrSVG(qrPayload(d))}<span>${siteBase() ? s.scanTxt : s.scanTxtPlain}</span></div>`;
+  }
+
+  const date = new Date().toLocaleDateString(L === 'en' ? 'en-US' : 'es-AR');
+  return `
+    <div class="paper">
+      <div class="pp-top"><b>${s.sheetT}</b><span>Expo Técnica 2026</span></div>
+      <h4 class="pp-title">Build Your Dream PC</h4>
+      <div class="pp-rows">${rows}</div>
+      <div class="pp-fps fps">${fps}</div>
+      ${extra}
+      <div class="pp-total"><span>${s.bdTot}</span><b class="fps">${money(d.total)}</b></div>
+      <p class="pp-note">${CUR === 'ARS' ? s.bdNoteArs : s.bdNote}</p>
+      ${foot}
+      <div class="pp-date">${date}</div>
+      ${ZIG}
+    </div>`;
+}
+
+// Imprimir: se copia la ficha a un contenedor propio y se imprime solo eso
+function printFicha() {
+  if (!fichaData().full) return;
+  $('printRoot').innerHTML = fichaHTML();
+  window.print();
+}
+window.addEventListener('afterprint', () => { $('printRoot').innerHTML = ''; });
+
+// QR grande para escanear directo desde la pantalla
+function drawQR() {
+  const d = fichaData();
+  if (!d.full) return;
+  const base = siteBase();
+  $('qrbig').innerHTML = qrSVG(qrPayload(d));
+
+  // Si la página se abre desde tu compu (localhost o archivo), se puede escribir la dirección pública
+  const askSite = !cleanBase(SITE_URL) && !autoBase();
+  $('qrsite').hidden = !askSite;
+  $('qrnote').hidden = !(askSite && !base);
+  const link = $('qrlink');
+  link.hidden = !base;
+  if (base) {
+    const url = fichaLink(base);
+    link.innerHTML = `${t().qrOpens} <a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+  }
+}
+
+function openQR() {
+  if (!fichaData().full) return;
+  $('siteurl').value = savedBase();
+  drawQR();
+  const dlg = $('qrdlg');
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+}
+
+/* ---------- 1. Actualiza todo el simulador cuando se elige una pieza o la moneda ---------- */
+function build() {
+  const s = t();
+  const [c, g, r] = [CPU[sel.c], GPU[sel.g], RAM[sel.r]];
+  const full = !!(c && g && r);
+
+  // tarjetas elegidas
+  document.querySelectorAll('.pc').forEach(b => {
+    const on = sel[b.dataset.k] === +b.dataset.i;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on);
+  });
+
+  // PC en vivo
+  $('tower').classList.toggle('on', full);
+  $('tp').innerHTML = towerHTML(c, g, r, lastPick);
+
+  // medidor de FPS
+  const fps = full ? fpsOf(c, g, r) : 0;
+  $('gn').textContent = full ? fps : '—';
+  $('gv').style.strokeDasharray = Math.min(100, fps / MAXGPU * 100) + ' 100';
+  $('gv').style.opacity = full ? 1 : 0;
+  $('fr').textContent = full ? perfOf(fps) : '—';
+
+  // avisos
+  const fm = $('fm');
+  if (!full) {
+    fm.className = 'msg';
+    fm.textContent = s.empty;
+  } else {
+    const bottleneck = c.cap < g.fps;
+    const m = [bottleneck ? s.bn : s.ok];
+    if (liqOf(c, g)) m.push(s.liq);        // gama alta: refrigeración líquida
+    if (r.dual) m.push(s.dual);            // RAM en dual channel
+    if (fps > 60) m.push(s.mon);           // aviso del monitor
+    fm.className = 'msg' + (bottleneck ? ' warn' : '');
+    fm.innerHTML = m.join('<br>');
+  }
+
+  // moneda: botones y cotización
+  document.querySelectorAll('[data-cur]').forEach(b => b.setAttribute('aria-pressed', b.dataset.cur === CUR));
+  $('rateRow').hidden = CUR !== 'ARS';
+
+  // ficha y botones
+  $('ficha').innerHTML = fichaHTML();
+  document.querySelectorAll('[data-act=print],[data-act=img],[data-act=qr]').forEach(b => { b.disabled = !full; });
+}
+
+/* ---------- 4. Voz: escuchar la carta en inglés y en español ---------- */
+// (las funciones de voz canSpeak, pickVoice y speakOne están en voz.js)
+
+function say(i, which) {                    // which: 'en', 'es' o 'both'
+  const s = t(), msg = $('gmsg');
+  msg.textContent = '';
+  if (!canSpeak) { msg.textContent = s.noVoice; return; }
+  const [en, es, , ces, cen] = G[i];
+  const clean = x => x.replace(/\s*\/\s*/g, ', ');
+  speechSynthesis.cancel();
+  if (which !== 'es' && !speakOne(`${clean(en)}. ${cen}`, 'en')) msg.textContent = s.noVoiceEn;
+  if (which !== 'en' && !speakOne(`${clean(es)}. ${ces}`, 'es')) msg.textContent = s.noVoiceEs;
+}
+
+/* ---------- 4. Glosario (30 cartas con dibujo, concepto, voz y buscador) ---------- */
+function gcard(g, i) {
+  const [en, es, ic, ces, cen] = g;
+  return `
+    <div class="gcell">
+      <button class="flip" data-gi="${i}" aria-pressed="false">
+        <span class="face f">${icon(ic)}<b>${en}</b><small>${cen}</small></span>
+        <span class="face b">${icon(ic)}<b>${es}</b><small>${ces}</small></span>
+      </button>
+      <div class="gaudio" hidden>
+        <button data-say="en" data-gi="${i}" aria-label="${tr('Escuchar en inglés', 'Listen in English')}">🔊 English</button>
+        <button data-say="es" data-gi="${i}" aria-label="${tr('Escuchar en español', 'Listen in Spanish')}">🔊 Español</button>
+        <button data-say="both" data-gi="${i}" aria-label="${tr('Escuchar en los dos idiomas', 'Listen in both languages')}">🔊 EN + ES</button>
+      </div>
+    </div>`;
+}
+
+function gloss() {
+  const q = $('q').value.toLowerCase();
+  $('gl').innerHTML = G
+    .map((g, i) => [g, i])
+    .filter(([g]) => [g[0], g[1], g[3], g[4]].join(' ').toLowerCase().includes(q))
+    .map(([g, i]) => gcard(g, i)).join('');
+  $('gmsg').textContent = '';
+}
+
+// Toca una carta: se da vuelta y aparecen los botones para escuchar
+function flipCard(b) {
+  const on = b.classList.toggle('on');
+  b.setAttribute('aria-pressed', on);
+  b.parentElement.querySelector('.gaudio').hidden = !on;
+  $('gmsg').textContent = '';
+  if (!on && canSpeak) speechSynthesis.cancel();
+}
+
+/* ---------- Dibuja toda la página en el idioma actual ---------- */
+function render() {
+  const s = t();
+  document.documentElement.lang = L;
+
+  document.querySelectorAll('[data-t]').forEach(e => { e.textContent = s[e.dataset.t]; });
+
+  $('nav').innerHTML = ['build', 'video', 'game', 'gloss']
+    .map((h, i) => `<a href="#${h}">${s.nav[i]}</a>`).join('');
+  $('q').placeholder = s.sp;
+
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.setAttribute('aria-pressed', b.dataset.l === L);
+  });
+
+  buildPick();
+  buildRig();
+  build();
+  v2draw();
+  gmDraw();
+  gloss();
+}
+
+/* ---------- Clics ---------- */
+document.addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  if (b.dataset.l) {                    // cambiar idioma
+    L = b.dataset.l;
+    render();
+  } else if (b.dataset.cur) {           // cambiar moneda (dólar / peso)
+    CUR = b.dataset.cur;
+    buildPick();
+    build();
+  } else if (b.dataset.k) {             // elegir CPU / GPU / RAM
+    sel[b.dataset.k] = +b.dataset.i;
+    lastPick = b.dataset.k;
+    build();
+    lastPick = null;
+    v2draw();
+  } else if (b.dataset.act === 'print') {
+    printFicha();
+  } else if (b.dataset.act === 'img') {
+    downloadImg();
+  } else if (b.dataset.act === 'qr') {
+    openQR();
+  } else if (b.dataset.act === 'qrclose') {
+    $('qrdlg').close();
+  } else if (b.dataset.say) {           // escuchar una carta
+    say(+b.dataset.gi, b.dataset.say);
+  } else if (b.classList.contains('flip')) {
+    flipCard(b);
+  }
+});
+
+// Cerrar el QR grande tocando afuera
+$('qrdlg').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.close();
+});
+
+$('q').addEventListener('input', gloss);
+
+// Dirección pública de la página (para que el QR abra la ficha desde el celular)
+$('siteurl').addEventListener('input', e => {
+  try { localStorage.setItem('siteUrl', e.target.value.trim()); } catch (err) {}
+  drawQR();
+  build();
+});
+
+// Cotización editable: pesos por cada dólar
+$('rate').value = RATE;
+$('rate').addEventListener('input', e => {
+  const v = +e.target.value;
+  if (v > 0) {
+    RATE = v;
+    try { localStorage.setItem('rate', v); } catch (err) {}
+    buildPick();
+    build();
+  }
+});
+
+gmStart();    // arranca el juego
+render();     // arranca la página
+
+</script>
+
+
+  <script src="tarjeta.js"></script>
+  <script>
+/* Descargar imagen del presupuesto con las piezas elegidas (misma tarjeta que abre el QR) */
+function downloadImg() {
+  const d = fichaData();
+  if (!d.full) return;
+  const cv = document.createElement('canvas');
+  cv.width = 900; cv.height = 1540;
+  const n = new Date(), z = v => String(v).padStart(2, '0');
+  const res = drawCard(cv, { c: d.c, g: d.g, r: d.r, w: d.w, liq: d.liq, L, ARS: CUR === 'ARS', RATE, date: `${z(n.getDate())}/${z(n.getMonth() + 1)}/${n.getFullYear()}` });
+  res.ready.then(() => cv.toBlob(b => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = 'mi-pc-sonada.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }, 'image/png'));
+}
+
+/* Dirección de la página para el QR: solo se muestra si hace falta escribirla */
+(function () {
+  const box = document.getElementById('siteBox'), inp = document.getElementById('siteurl2');
+  if (cleanBase(SITE_URL) || autoBase()) return;
+  box.hidden = false;
+  inp.value = savedBase();
+  inp.addEventListener('input', () => {
+    try { localStorage.setItem('siteUrl', inp.value.trim()); } catch (e) {}
+    build();
+  });
+})();
+  </script>
+</body>
+
+</html>
